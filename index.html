@@ -80,6 +80,128 @@
             box-shadow: 0 10px 30px rgba(198, 70, 0, 0.4);
         }
 
+        /* Planes Section */
+        .planes {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+        }
+
+        .planes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .plan-card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .plan-card.destacado {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1510 100%);
+        }
+
+        .plan-card.destacado::before {
+            content: 'Más Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .plan-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .plan-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .plan-features {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .plan-features li {
+            list-style: none;
+            padding: 8px 0;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-features li i {
+            color: var(--primary);
+        }
+
+        .plan-features li.disabled {
+            color: #555;
+            text-decoration: line-through;
+        }
+
+        .plan-features li.disabled i {
+            color: #555;
+        }
+
+        .plan-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card.destacado .plan-button {
+            background: var(--primary);
+            color: white;
+        }
+
+        .plan-button:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         /* Módulos Section */
         .modulos {
             padding: 80px 20px;
@@ -207,6 +329,58 @@
             <i class="fas fa-eye"></i>
             Ver Demo
         </a>
+    </section>
+
+    <!-- Planes -->
+    <section class="planes">
+        <h2 class="section-title">Elige tu <span>Plan</span></h2>
+        
+        <div class="planes-grid">
+            <!-- Plan Básico -->
+            <div class="plan-card">
+                <div class="plan-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="plan-title">Básico</h3>
+                <div class="plan-price">$15<span>/evento</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Todos los módulos de la invitación</li>
+                    <li><i class="fas fa-check"></i> Hero con imagen de portada</li>
+                    <li><i class="fas fa-check"></i> Frase personalizada</li>
+                    <li><i class="fas fa-check"></i> Fecha y hora del evento</li>
+                    <li><i class="fas fa-check"></i> Countdown contador regresivo</li>
+                    <li><i class="fas fa-check"></i> Ubicación con Maps</li>
+                    <li><i class="fas fa-check"></i> Sección de regalos</li>
+                    <li><i class="fas fa-check"></i> Instagram del evento</li>
+                    <li><i class="fas fa-check"></i> Música de fondo</li>
+                    <li><i class="fas fa-times" style="color: #555;"></i> Libro de visitas</li>
+                    <li><i class="fas fa-times" style="color: #555;"></i> Galería de fotos</li>
+                    <li><i class="fas fa-times" style="color: #555;"></i> PDF con saludos</li>
+                    <li><i class="fas fa-times" style="color: #555;"></i> ZIP con fotos</li>
+                </ul>
+                <a href="https://markentas.github.io/demo" class="plan-button" target="_blank">Ver Demo</a>
+            </div>
+            
+            <!-- Plan Premium -->
+            <div class="plan-card destacado">
+                <div class="plan-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="plan-title">Premium</h3>
+                <div class="plan-price">$25<span>/evento</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Todo del plan Básico</li>
+                    <li><i class="fas fa-check"></i> <strong>Libro de Visitas</strong> digital</li>
+                    <li><i class="fas fa-check"></i> <strong>Galería de Fotos</strong> colaborativa</li>
+                    <li><i class="fas fa-check"></i> <strong>PDF</strong> con todos los saludos</li>
+                    <li><i class="fas fa-check"></i> <strong>ZIP</strong> con todas las fotos</li>
+                    <li><i class="fas fa-check"></i> Invitados pueden dejar mensajes</li>
+                    <li><i class="fas fa-check"></i> Invitados pueden subir fotos</li>
+                    <li><i class="fas fa-check"></i> Descarga de recuerdos forever</li>
+                </ul>
+                <a href="https://markentas.github.io/demo" class="plan-button" target="_blank">Ver Demo</a>
+            </div>
+        </div>
     </section>
 
     <!-- Módulos -->
