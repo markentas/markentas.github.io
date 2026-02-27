@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markentas - Tarjetas Digitales Interactivas</title>
+    <title>Markentas - Tarjetas Digitales Únicas</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        
         * {
             margin: 0;
             padding: 0;
@@ -18,9 +15,15 @@
 
         :root {
             --primary: #c64600;
+            --primary-light: #e87a33;
             --dark: #0a0a0a;
-            --light: #f5f5f5;
+            --dark-alt: #141414;
             --gray: #666;
+            --gray-light: #888;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -28,6 +31,18 @@
             background: var(--dark);
             color: #fff;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Hero Section */
@@ -38,437 +53,677 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        }
-
-        .logo {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #aaa;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(198, 70, 0, 0.4);
-        }
-
-        /* Planes Section */
-        .planes {
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
-        }
-
-        .planes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .plan-card {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 2px solid #333;
-            transition: all 0.3s ease;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
             position: relative;
         }
 
-        .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .plan-card.destacado {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a1510 100%);
-        }
-
-        .plan-card.destacado::before {
-            content: 'Más Popular';
+        .hero::before {
+            content: '';
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .plan-icon {
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-icon {
             font-size: 3rem;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out both;
         }
 
-        .plan-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .plan-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .plan-price span {
-            font-size: 1rem;
-            color: #666;
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
             font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
         }
 
-        .plan-features {
-            text-align: left;
-            margin-bottom: 25px;
-        }
-
-        .plan-features li {
-            list-style: none;
-            padding: 8px 0;
-            color: #aaa;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .plan-features li i {
+        .hero h1 span {
             color: var(--primary);
         }
 
-        .plan-features li.disabled {
-            color: #555;
-            text-decoration: line-through;
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
-        .plan-features li.disabled i {
-            color: #555;
-        }
-
-        .plan-button {
+        .hero-cta {
             display: inline-block;
-            padding: 15px 35px;
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            padding: 16px 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, #b8962e 100%);
+            color: var(--dark);
             text-decoration: none;
-            border-radius: 30px;
             font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
-        .plan-card.destacado .plan-button {
-            background: var(--primary);
-            color: white;
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
-        .plan-button:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Módulos Section */
-        .modulos {
+        /* Section Titles */
+        .section {
             padding: 80px 20px;
-            background: #111;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 2.2rem;
             margin-bottom: 50px;
         }
 
-        .section-title span {
-            color: var(--primary);
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
         }
 
-        .modulos-grid {
+        .section-subtitle {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Categories */
+        .category {
+            background: var(--dark-alt);
+        }
+
+        .category:nth-child(even) {
+            background: var(--dark);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #151515 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1e1e1e 0%, #0d0d0d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .card-image-accent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .card-image-accent span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            gap: 15px;
+        }
+
+        .card-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(180deg, var(--dark) 0%, #111 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .modulo-card {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 15px;
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px 25px;
             text-align: center;
-            border: 1px solid #333;
             transition: all 0.3s ease;
         }
 
-        .modulo-card:hover {
-            border-color: var(--primary);
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(212, 175, 55, 0.2);
             transform: translateY(-5px);
         }
 
-        .modulo-card i {
-            font-size: 2.5rem;
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 15px;
         }
 
-        .modulo-card h3 {
-            font-size: 1.1rem;
+        .feature-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #fff;
             margin-bottom: 10px;
         }
 
-        .modulo-card p {
-            font-size: 0.9rem;
-            color: #888;
+        .feature-desc {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            line-height: 1.5;
         }
 
-        /* Demos Section */
-        .demos {
-            padding: 80px 20px;
-            background: var(--dark);
+        /* Process */
+        .process {
+            background: var(--dark-alt);
         }
 
-        .demo-links {
+        .process-steps {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
             flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .demo-link {
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: transparent;
-            border: 2px solid #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
         }
 
-        .demo-link:hover {
-            border-color: var(--primary);
-            color: var(--primary);
+        .step-title {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--gray-light);
         }
 
         /* Footer */
         footer {
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
-            background: #000;
-            color: #666;
-            font-size: 0.9rem;
+            background: #050505;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        footer a {
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
             color: var(--primary);
-            text-decoration: none;
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        .footer-text {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+            .section-title {
                 font-size: 2rem;
             }
-            .hero p {
-                font-size: 1rem;
-            }
-            .modulos-grid {
+            .cards-grid {
                 grid-template-columns: 1fr;
+            }
+            .process-steps {
+                flex-direction: column;
+                gap: 30px;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
     <!-- Hero -->
     <section class="hero">
-        <div class="logo">
-            <i class="fas fa-envelope-open-text"></i>
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h1>MARKENTAS</h1>
+            <p>Tarjetas digitales interactivas diseñadas para crear experiencias memorables. Cada invitación es única, elegante y personalizada para tu evento especial.</p>
+            <a href="#galeria" class="hero-cta">Ver Diseños</a>
         </div>
-        <h1>Markentas</h1>
-        <p>Tarjetas digitales interactivas para eventos especiales con música de fondo. Sorprende a tus invitados con una experiencia única y moderna.</p>
-        <a href="#planes" class="cta-button">
-            <i class="fas fa-tags"></i>
-            Ver Planes
-        </a>
     </section>
 
-    <!-- Planes -->
-    <section class="planes" id="planes">
-        <h2 class="section-title">Elige tu <span>Plan</span></h2>
+        <!-- 15 Años -->
+    <section class="section category" id="quince">
+        <div class="section-header">
+            <h2 class="section-title">Mis 15 Años</h2>
+            <p class="section-subtitle">Diseños exclusivos para quinceañeras</p>
+        </div>
         
-        <div class="planes-grid">
-            <!-- Plan Esencial -->
-            <div class="plan-card">
-                <div class="plan-icon">
-                    <i class="fas fa-star"></i>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>M</span></div>
+                    <span class="card-badge">Elegante</span>
                 </div>
-                <h3 class="plan-title">Esencial</h3>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> Todos los módulos de la invitación</li>
-                    <li><i class="fas fa-check"></i> Hero con imagen de portada</li>
-                    <li><i class="fas fa-check"></i> Frase personalizada</li>
-                    <li><i class="fas fa-check"></i> Fecha y hora del evento</li>
-                    <li><i class="fas fa-check"></i> Countdown contador regresivo</li>
-                    <li><i class="fas fa-check"></i> Ubicación con Maps</li>
-                    <li><i class="fas fa-check"></i> Sección de regalos</li>
-                    <li><i class="fas fa-check"></i> Instagram del evento</li>
-                    <li><i class="fas fa-check"></i> Música de fondo</li>
-                    <li><i class="fas fa-times" style="color: #555;"></i> Libro de visitas</li>
-                    <li><i class="fas fa-times" style="color: #555;"></i> Galería de fotos</li>
-                    <li><i class="fas fa-times" style="color: #555;"></i> PDF con saludos</li>
-                    <li><i class="fas fa-times" style="color: #555;"></i> ZIP con fotos</li>
-                </ul>
-                <a href="https://markentas.github.io/esencial" class="plan-button" target="_blank">Ver Tarjeta</a>
+                <div class="card-body">
+                    <h3 class="card-title">María</h3>
+                    <p class="card-desc">Diseño en tonos lavanda y violeta con elementos elegantes y sofisticados.</p>
+                    <a href="maria" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
             
-            <!-- Plan Premium -->
-            <div class="plan-card destacado">
-                <div class="plan-icon">
-                    <i class="fas fa-crown"></i>
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>J</span></div>
+                    <span class="card-badge">Premium</span>
                 </div>
-                <h3 class="plan-title">Premium</h3>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> Todo del plan Esencial</li>
-                    <li><i class="fas fa-check"></i> <strong>Libro de Visitas</strong> digital</li>
-                    <li><i class="fas fa-check"></i> <strong>Galería de Fotos</strong> colaborativa</li>
-                    <li><i class="fas fa-check"></i> <strong>PDF</strong> con todos los saludos</li>
-                    <li><i class="fas fa-check"></i> <strong>ZIP</strong> con todas las fotos</li>
-                    <li><i class="fas fa-check"></i> Invitados pueden dejar mensajes</li>
-                    <li><i class="fas fa-check"></i> Invitados pueden subir fotos</li>
-                    <li><i class="fas fa-check"></i> Descarga de recuerdos forever</li>
-                </ul>
-                <a href="https://markentas.github.io/premium" class="plan-button" target="_blank">Ver Tarjeta</a>
+                <div class="card-body">
+                    <h3 class="card-title">Juana</h3>
+                    <p class="card-desc">Estilo negro y dorado con líneas elegantes y elementos dorados.</p>
+                    <a href="juana" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>R</span></div>
+                    <span class="card-badge">Romántico</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Rebeca</h3>
+                    <p class="card-desc">Diseño en tonos rosa y champange con elementos suaves y delicados.</p>
+                    <a href="rebeca" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>M</span></div>
+                    <span class="card-badge">Floral</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Micaela</h3>
+                    <p class="card-desc">Estilo floral con tonos coral y lavanda, delicado y encantador.</p>
+                    <a href="micaela" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- 18 Años -->
+    <section class="section category" id="dieciocho">
+        <div class="section-header">
+            <h2 class="section-title">Mis 18 Años</h2>
+            <p class="section-subtitle">Celebraciones de mayoría de edad</p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>O</span></div>
+                    <span class="card-badge">Elegante</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Omar</h3>
+                    <p class="card-desc">Diseño azul noche con acentos cyan, moderno y sofisticado.</p>
+                    <a href="omar" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>C</span></div>
+                    <span class="card-badge">Urbano</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Carlos</h3>
+                    <p class="card-desc">Estilo geométrico negro y dorado, minimalista y elegante.</p>
+                    <a href="carlos" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>F</span></div>
+                    <span class="card-badge">Natural</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Fernando</h3>
+                    <p class="card-desc">Diseño orgánico en tonos verdes, sutil y con elementos naturales.</p>
+                    <a href="fernando" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>J</span></div>
+                    <span class="card-badge">Náutico</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Julian</h3>
+                    <p class="card-desc">Estilo náutico azul y blanco, fresco y con elementos marítimos.</p>
+                    <a href="julian" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bodas -->
+    <section class="section category" id="bodas">
+        <div class="section-header">
+            <h2 class="section-title">Bodas</h2>
+            <p class="section-subtitle">Invitaciones para el día más especial</p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>B</span></div>
+                    <span class="card-badge">Romántico</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Boda Beso</h3>
+                    <p class="card-desc">Diseño romántico con elementos de amor y pasión.</p>
+                    <a href="boda-beso" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>B</span></div>
+                    <span class="card-badge">Natural</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Boda Bosque</h3>
+                    <p class="card-desc">Estilo boho con tonos naturales y elementos florales.</p>
+                    <a href="boda-bosque" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>M</span></div>
+                    <span class="card-badge">Minimalista</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Boda Minimalista</h3>
+                    <p class="card-desc">Diseño limpio y elegante con simplicidad sofisticada.</p>
+                    <a href="boda-minimalista" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image">
+                    <div class="card-image-accent"><span>S</span></div>
+                    <span class="card-badge">Signature</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Boda Signature</h3>
+                    <p class="card-desc">Estilo clásico y elegante con elementos tradicionales.</p>
+                    <a href="boda-signature" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Módulos -->
-    <section class="modulos">
-        <h2 class="section-title">Módulos <span>Disponibles</span></h2>
+    <section class="section features" id="modulos">
+        <div class="section-header">
+            <h2 class="section-title">Módulos Incluidos</h2>
+            <p class="section-subtitle">Todo lo que necesitas en una invitación</p>
+        </div>
         
-        <div class="modulos-grid">
-            <div class="modulo-card">
-                <i class="fas fa-home"></i>
-                <h3>Hero</h3>
-                <p>Portada de entrada con imagen y botón de ingresar</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-home"></i></div>
+                <h3 class="feature-title">Hero</h3>
+                <p class="feature-desc">Portada de entrada con imagen de fondo y botón de descubrir</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-heart"></i>
-                <h3>Frase</h3>
-                <p>Mensaje especial o cita de los novios</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-hourglass-half"></i></div>
+                <h3 class="feature-title">Countdown</h3>
+                <p class="feature-desc">Contador regresivo animado hacia el gran día</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-calendar"></i>
-                <h3>Fecha</h3>
-                <p>Información del evento con fecha y hora</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-user-friends"></i></div>
+                <h3 class="feature-title">Padres</h3>
+                <p class="feature-desc">Sección de padres o bendición de los novios</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-clock"></i>
-                <h3>Countdown</h3>
-                <p>Contador regressivo para el gran día</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-images"></i></div>
+                <h3 class="feature-title">Galería</h3>
+                <p class="feature-desc">Slider de fotos del cumpleañero o pareja</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>Ubicación</h3>
-                <p>Dirección del evento con enlace a maps</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                <h3 class="feature-title">Fecha</h3>
+                <p class="feature-desc">Información del evento con fecha y hora</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-images"></i>
-                <h3>Galería</h3>
-                <p>Galería de fotos donde tus invitados pueden subir imágenes</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-quote-left"></i></div>
+                <h3 class="feature-title">Frase</h3>
+                <p class="feature-desc">Mensaje personalizado o cita especial</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-comments"></i>
-                <h3>Libro de Visitas</h3>
-                <p>Saludos y mensajes de tus invitados</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h3 class="feature-title">Ubicación</h3>
+                <p class="feature-desc">Dirección con enlace directo a Google Maps</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-gift"></i>
-                <h3>Regalos</h3>
-                <p>Información de regalos o cuenta bancaria</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-tshirt"></i></div>
+                <h3 class="feature-title">Dress Code</h3>
+                <p class="feature-desc">Código de vestimenta con paleta de colores</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fab fa-instagram"></i>
-                <h3>Instagram</h3>
-                <p>Hashtag del evento o perfil de Instagram</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                <h3 class="feature-title">Itinerario</h3>
+                <p class="feature-desc">Agenda del evento con horarios y actividades</p>
             </div>
             
-            <div class="modulo-card">
-                <i class="fas fa-music"></i>
-                <h3>Música de Fondo</h3>
-                <p>Audio ambiente con botón play/pause para reproducir la canción que elijas</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                <h3 class="feature-title">Regalos</h3>
+                <p class="feature-desc">Información de regalos con datos bancarios</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fab fa-instagram"></i></div>
+                <h3 class="feature-title">Instagram</h3>
+                <p class="feature-desc">Hashtag del evento para compartir fotos</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-music"></i></div>
+                <h3 class="feature-title">Música</h3>
+                <p class="feature-desc">Audio de fondo con botón play/pause</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso -->
+    <section class="section process">
+        <div class="section-header">
+            <h2 class="section-title">¿Cómo Trabajamos?</h2>
+            <p class="section-subtitle">Proceso simple y personalizado</p>
+        </div>
+        
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Eliges el Diseño</h3>
+                <p class="step-desc">Selecciona una de nuestras plantillas o solicitá uno personalizado</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Personalizamos</h3>
+                <p class="step-desc">Adaptamos colores, textos, fotos y música a tu gusto</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Compartís</h3>
+                <p class="step-desc">Recibís el enlace para compartir con tus invitados</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Markentas. Todos los derechos reservados.</p>
+        <div class="footer-logo">MARKENTAS</div>
+        <p class="footer-text">Tarjetas digitales únicas para eventos memorables</p>
     </footer>
 </body>
 </html>
