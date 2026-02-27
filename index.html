@@ -145,6 +145,61 @@
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 35px;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
         /* Section Titles */
         .section {
             padding: 80px 20px;
@@ -464,7 +519,12 @@
             </div>
             <h1>MARKENTAS</h1>
             <p>Tarjetas digitales interactivas diseñadas para crear experiencias memorables. Cada invitación es única, elegante y personalizada para tu evento especial.</p>
-            <a href="#quince" class="hero-cta">Ver Diseños</a>
+            <div class="hero-buttons">
+                <a href="#quince" class="hero-cta">Ver Diseños</a>
+                <a href="https://wa.me/5493873600399?text=Hola%2C%20quiero%20solicitar%20una%20tarjeta" target="_blank" class="hero-cta-secondary">
+                    <i class="fab fa-whatsapp"></i> Consultar
+                </a>
+            </div>
         </div>
     </section>
 
@@ -761,6 +821,11 @@
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
         <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5493873600399?text=Hola%2C%20quiero%20solicitar%20una%20tarjeta" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
