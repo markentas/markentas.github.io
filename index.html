@@ -192,7 +192,14 @@
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
+        }
+
+        .whatsapp-float.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
         .whatsapp-float:hover {
@@ -824,24 +831,33 @@
     </a>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5493873600399?text=Hola%2C%20quiero%20solicitar%20una%20tarjeta" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/5493873600399?text=Hola%2C%20quiero%20solicitar%20una%20tarjeta" target="_blank" class="whatsapp-float" id="whatsappBtn">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        const backToTopBtn = document.getElementById('backToTop');
-        const designsSection = document.getElementById('quince');
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            const designsSection = document.getElementById('quince');
 
-        window.addEventListener('scroll', function() {
-            const designsPosition = designsSection.getBoundingClientRect().top;
-            const screenHeight = window.innerHeight;
-            
-            // Mostrar botón cuando la sección de diseños esté a 100px de la parte superior de la pantalla
-            if (designsPosition < screenHeight - 100) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
+            function checkVisibility() {
+                const designsPosition = designsSection.getBoundingClientRect().top;
+                const screenHeight = window.innerHeight;
+                
+                // Mostrar botones cuando la sección de diseños esté a 100px de la parte superior de la pantalla
+                if (designsPosition < screenHeight - 100) {
+                    backToTopBtn.classList.add('visible');
+                    whatsappBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                    whatsappBtn.classList.remove('visible');
+                }
             }
+
+            // Verificar al cargar y al hacer scroll
+            checkVisibility();
+            window.addEventListener('scroll', checkVisibility);
         });
     </script>
 </body>
