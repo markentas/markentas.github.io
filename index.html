@@ -182,7 +182,7 @@
 
         .card-image {
             width: 100%;
-            height: 200px;
+            height: 350px;
             background: linear-gradient(135deg, #1e1e1e 0%, #0d0d0d 100%);
             display: flex;
             align-items: center;
@@ -191,36 +191,11 @@
             overflow: hidden;
         }
 
-        .card-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
-        }
-
-        .card-image-accent {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-
-        .card-image-accent span {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--primary);
-            font-weight: 600;
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
         }
 
         .card-badge {
@@ -404,6 +379,40 @@
             margin-bottom: 25px;
         }
 
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 0.8;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -432,7 +441,7 @@
             </div>
             <h1>MARKENTAS</h1>
             <p>Tarjetas digitales interactivas diseñadas para crear experiencias memorables. Cada invitación es única, elegante y personalizada para tu evento especial.</p>
-            <a href="#galeria" class="hero-cta">Ver Diseños</a>
+            <a href="#quince" class="hero-cta">Ver Diseños</a>
         </div>
     </section>
 
@@ -446,7 +455,7 @@
         <div class="cards-grid">
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>M</span></div>
+                    <img src="img/maria.png" alt="María" class="card-img">
                     <span class="card-badge">Elegante</span>
                 </div>
                 <div class="card-body">
@@ -458,7 +467,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>J</span></div>
+                    <img src="img/juana.png" alt="Juana" class="card-img">
                     <span class="card-badge">Premium</span>
                 </div>
                 <div class="card-body">
@@ -470,7 +479,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>R</span></div>
+                    <img src="img/rebeca.png" alt="Rebeca" class="card-img">
                     <span class="card-badge">Romántico</span>
                 </div>
                 <div class="card-body">
@@ -482,7 +491,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>M</span></div>
+                    <img src="img/micaela.png" alt="Micaela" class="card-img">
                     <span class="card-badge">Floral</span>
                 </div>
                 <div class="card-body">
@@ -504,7 +513,7 @@
         <div class="cards-grid">
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>O</span></div>
+                    <img src="img/omar.png" alt="Omar" class="card-img">
                     <span class="card-badge">Elegante</span>
                 </div>
                 <div class="card-body">
@@ -516,7 +525,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>C</span></div>
+                    <img src="img/carlos.png" alt="Carlos" class="card-img">
                     <span class="card-badge">Urbano</span>
                 </div>
                 <div class="card-body">
@@ -528,7 +537,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>F</span></div>
+                    <img src="img/fernando.png" alt="Fernando" class="card-img">
                     <span class="card-badge">Natural</span>
                 </div>
                 <div class="card-body">
@@ -540,7 +549,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>J</span></div>
+                    <img src="img/julian.png" alt="Julian" class="card-img">
                     <span class="card-badge">Náutico</span>
                 </div>
                 <div class="card-body">
@@ -562,7 +571,7 @@
         <div class="cards-grid">
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>B</span></div>
+                    <img src="img/boda-beso.png" alt="Boda Beso" class="card-img">
                     <span class="card-badge">Romántico</span>
                 </div>
                 <div class="card-body">
@@ -574,7 +583,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>B</span></div>
+                    <img src="img/boda-bosque.png" alt="Boda Bosque" class="card-img">
                     <span class="card-badge">Natural</span>
                 </div>
                 <div class="card-body">
@@ -586,7 +595,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>M</span></div>
+                    <img src="img/boda-minimalista.png" alt="Boda Minimalista" class="card-img">
                     <span class="card-badge">Minimalista</span>
                 </div>
                 <div class="card-body">
@@ -598,7 +607,7 @@
             
             <div class="card">
                 <div class="card-image">
-                    <div class="card-image-accent"><span>S</span></div>
+                    <img src="img/boda-signature.png" alt="Boda Signature" class="card-img">
                     <span class="card-badge">Signature</span>
                 </div>
                 <div class="card-body">
@@ -725,5 +734,27 @@
         <div class="footer-logo">MARKENTAS</div>
         <p class="footer-text">Tarjetas digitales únicas para eventos memorables</p>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        const backToTopBtn = document.getElementById('backToTop');
+        const designsSection = document.getElementById('quince');
+
+        window.addEventListener('scroll', function() {
+            const designsPosition = designsSection.getBoundingClientRect().top;
+            const screenHeight = window.innerHeight;
+            
+            // Mostrar botón cuando la sección de diseños esté a 100px de la parte superior de la pantalla
+            if (designsPosition < screenHeight - 100) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 </html>
