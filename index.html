@@ -461,7 +461,80 @@
         .footer-text {
             color: var(--gray);
             font-size: 0.9rem;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+        }
+
+        .footer-other {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--gray-light);
+        }
+
+        .footer-other a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-other a:hover {
+            color: #fff;
+        }
+
+        .footer-separator {
+            margin: 0 10px;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-projects {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .footer-project {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .footer-project:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-project-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .footer-project-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer-project-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .footer-project-label {
+            font-size: 0.65rem;
+            color: var(--gray-light);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Back to Top Button */
@@ -822,7 +895,24 @@
     <!-- Footer -->
     <footer>
         <div class="footer-logo">MARKENTAS</div>
-        <p class="footer-text">Tarjetas digitales únicas para eventos memorables</p>
+        <p class="footer-text">Visita también:</p>
+        
+        <div class="footer-projects">
+            <a href="../dulcesmazza" target="_blank" class="footer-project">
+                <div class="footer-project-icon">
+                    <img src="img/dulcesmazza.svg" alt="Dulces Mazza">
+                </div>
+                <span class="footer-project-name">Dulces Mazza</span>
+                <span class="footer-project-label">Masas Caseras</span>
+            </a>
+            <a href="../organogold" target="_blank" class="footer-project">
+                <div class="footer-project-icon">
+                    <img src="img/organogold.svg" alt="OrganoGold">
+                </div>
+                <span class="footer-project-name">OrganoGold</span>
+                <span class="footer-project-label">Café Premium</span>
+            </a>
+        </div>
     </footer>
 
     <!-- Back to Top Button -->
