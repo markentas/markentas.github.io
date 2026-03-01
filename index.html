@@ -3,46 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markentas | Invitaciones Digitales Interactivas y Modernas</title>
 
-    <meta name="title" content="Markentas | Invitaciones Digitales Interactivas y Modernas" />
-    <meta name="description" content="Crea momentos inolvidables con nuestras invitaciones digitales interactivas. Diseños exclusivos para bodas, cumpleaños y eventos. ¡Envía por WhatsApp con un solo clic!" />
-    <meta name="keywords" content="invitaciones digitales, invitaciones interactivas, tarjetas virtuales, invitaciones whatsapp, invitaciones para bodas, invitaciones de cumpleaños, invitaciones de 15, invitaciones de 18, markentas" />
+    <meta name="description" content="Markentas: Creamos tu catálogo digital autogestionable. Controlá tus precios desde Google Sheets y recibí pedidos por WhatsApp." />
+    <meta name="keywords" content="markentas, catálogo digital, salvador mazza, ventas por whatsapp, diseño web economico, google sheets a web, ecommerce local, soluciones" />
     <meta name="author" content="Markentas" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://markentas.github.io/" />
-    <meta property="og:title" content="Markentas | Invitaciones Digitales Interactivas para tu Evento" />
-    <meta property="og:description" content="Sorprende a tus invitados con una tarjeta digital moderna y ecológica. Confirmación de asistencia, ubicación GPS y más. ¡Personaliza la tuya!" />
-    <meta property="og:image" content="https://markentas.github.io/img/invitacion-preview.png" />
+    <meta property="og:title" content="Markentas | Tu Negocio en un Link" />
+    <meta property="og:description" content="Digitalizá tu comercio hoy. Catálogos autogestionables, fáciles de usar y listos para vender por WhatsApp." />
+    <meta property="og:image" content="img/markentas-preview.png" /> 
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://markentas.github.io/" />
-    <meta property="twitter:title" content="Markentas | Invitaciones Digitales Interactivas" />
-    <meta property="twitter:description" content="Diseños únicos y modernos para tus eventos. Invitaciones que tus invitados amarán recibir." />
-    <meta property="twitter:image" content="https://markentas.github.io/img/invitacion-preview.png" />
+    <meta property="twitter:title" content="Markentas | Catálogos Digitales Autogestionables" />
+    <meta property="twitter:description" content="Llevá tu negocio al siguiente nivel con un catálogo profesional gestionado desde tu celular." />
+    <meta property="twitter:image" content="img/markentas-preview.png" />
+    <meta name="twitter:image:src" content="img/markentas-preview.png" />
+    
+    <title>Markentas - Catálogo Digital Autogestionable</title>
 
-    <link rel="icon" type="image/svg+xml" href="https://markentas.github.io/img/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="https://markentas.github.io/img/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="https://markentas.github.io/img/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="https://markentas.github.io/img/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://markentas.github.io/img/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --accent: #0ea5e9;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --success: #10b981;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #c64600;
-            --primary-light: #e87a33;
-            --dark: #0a0a0a;
-            --dark-alt: #141414;
-            --gray: #666;
-            --gray-light: #888;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -50,905 +57,1009 @@
         }
 
         body {
-            font-family: 'Open Sans', system-ui, sans-serif;
-            background: var(--dark);
-            color: #fff;
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--light);
+            color: var(--dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
         }
 
         /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 30% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
-            pointer-events: none;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
         .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
-        .hero-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 30px;
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--dark);
+            margin-bottom: 20px;
             animation: fadeInUp 0.8s ease-out both;
         }
 
-        .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            letter-spacing: 8px;
+        .hero-text h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 35px;
             animation: fadeInUp 0.8s ease-out 0.1s both;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--gray-light);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            padding: 16px 45px;
-            background: linear-gradient(135deg, var(--primary) 0%, #b8962e 100%);
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
-            justify-content: center;
+            gap: 15px;
             flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
             animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
-        .hero-cta-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 35px;
-            background: transparent;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
         }
 
-        .hero-cta-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-3px);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            background: #25D366;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-float.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .whatsapp-float:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-        }
-
-        /* Section Titles */
-        .section {
-            padding: 80px 20px;
+        /* Section Styles */
+        section {
+            padding: 100px 0;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
-        .section-title {
-            font-family: 'Cinzel', serif;
+        .section-header h2 {
             font-size: 2.5rem;
-            color: #fff;
+            font-weight: 700;
+            color: var(--dark);
             margin-bottom: 15px;
-            letter-spacing: 3px;
         }
 
-        .section-subtitle {
-            color: var(--gray-light);
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problema Section */
+        .problema {
+            background: var(--white);
+        }
+
+        .problema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problema-card {
+            padding: 35px;
+            background: var(--light);
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .problema-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .problema-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .problema-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .problema-card p {
+            color: var(--gray);
             font-size: 0.95rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
-        /* Categories */
-        .category {
-            background: var(--dark-alt);
+        /* Solucion Section */
+        .solucion {
+            background: linear-gradient(180deg, #f0f9ff 0%, var(--light) 100%);
         }
 
-        .category:nth-child(even) {
-            background: var(--dark);
-        }
-
-        /* Cards Grid */
-        .cards-grid {
+        .solucion-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
-        .card {
-            background: linear-gradient(145deg, #1a1a1a 0%, #151515 100%);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(135deg, #1e1e1e 0%, #0d0d0d 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary);
-            color: var(--dark);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            z-index: 2;
-        }
-
-        .card-body {
-            padding: 25px;
-        }
-
-        .card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            color: #fff;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-
-        .card-desc {
-            font-size: 0.85rem;
-            color: var(--gray-light);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
+        .solucion-card {
+            padding: 35px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
 
-        .card-link:hover {
-            gap: 15px;
-        }
-
-        .card-link i {
-            transition: transform 0.3s ease;
-        }
-
-        .card-link:hover i {
-            transform: translateX(5px);
-        }
-
-        /* Features Section */
-        .features {
-            background: linear-gradient(180deg, var(--dark) 0%, #111 100%);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 30px 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(212, 175, 55, 0.2);
+        .solucion-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 50%;
+        .solucion-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.3rem;
-            color: var(--primary);
+            margin-bottom: 20px;
         }
 
-        .feature-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: #fff;
+        .solucion-icon i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .solucion-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .solucion-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Dominio Section */
+        .dominio {
+            background: var(--white);
+        }
+
+        .dominio-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .dominio-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .dominio-text p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .dominio-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .dominio-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .dominio-features li i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        .dominio-price {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .dominio-price .price {
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 10px;
         }
 
-        .feature-desc {
-            font-size: 0.85rem;
-            color: var(--gray-light);
-            line-height: 1.5;
+        .dominio-price .price-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
-        /* Process */
-        .process {
-            background: var(--dark-alt);
+        .dominio-price p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        .process-steps {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+        /* Planes Section */
+        .planes {
+            background: linear-gradient(180deg, #f0f9ff 0%, var(--light) 100%);
+        }
+
+        .planes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .step {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .step-title {
-            font-size: 1.1rem;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .step-desc {
-            font-size: 0.85rem;
-            color: var(--gray-light);
-        }
-
-        /* Footer */
-        footer {
-            padding: 60px 20px;
-            text-align: center;
-            background: #050505;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            letter-spacing: 5px;
-        }
-
-        .footer-text {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .footer-other {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: var(--gray-light);
-        }
-
-        .footer-other a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-other a:hover {
-            color: #fff;
-        }
-
-        .footer-separator {
-            margin: 0 10px;
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-projects {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .footer-project {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
+        .plan-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            min-width: 120px;
+            position: relative;
+            border: 2px solid transparent;
         }
 
-        .footer-project:hover {
-            background: rgba(255, 255, 255, 0.08);
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .plan-card.premium {
             border-color: var(--primary);
-            transform: translateY(-3px);
+            transform: scale(1.05);
         }
 
-        .footer-project-icon {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 10px;
+        .plan-card.premium:hover {
+            transform: scale(1.05) translateY(-10px);
         }
 
-        .footer-project-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .footer-project-name {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            color: #fff;
-            letter-spacing: 1px;
-        }
-
-        .footer-project-label {
-            font-size: 0.65rem;
-            color: var(--gray-light);
-            margin-top: 4px;
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .plan-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 25px 0;
+        }
+
+        .plan-features {
+            list-style: none;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        .plan-features li i {
+            color: var(--success);
+            font-size: 1rem;
+        }
+
+        .plan-features li.missing {
+            color: var(--gray);
+        }
+
+        .plan-features li.missing i {
+            color: #cbd5e1;
+        }
+
+        .plan-card .btn {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        /* Garantia Section */
+        .garantia {
+            background: var(--white);
+        }
+
+        .garantia-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .garantia-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .garantia-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .garantia-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .garantia-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Clientes Section */
+        .clientes {
+            background: linear-gradient(180deg, #f0f9ff 0%, var(--light) 100%);
+        }
+
+        .clientes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cliente-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .cliente-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cliente-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .cliente-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .cliente-card:hover .cliente-image img {
+            transform: scale(1.05);
+        }
+
+        .cliente-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .cliente-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .cliente-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 35px;
+        }
+
+        .cta .btn {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo i {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
             width: 50px;
             height: 50px;
-            background: var(--primary);
-            color: var(--dark);
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
             font-size: 1.2rem;
-            opacity: 0;
-            visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
         }
 
-        .back-to-top.visible {
-            opacity: 0.8;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            opacity: 1;
+        .footer-social a:hover {
+            background: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .footer-contact {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .footer-contact a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
                 font-size: 2.5rem;
-                letter-spacing: 4px;
             }
-            .section-title {
-                font-size: 2rem;
+
+            .hero-buttons {
+                justify-content: center;
             }
-            .cards-grid {
+
+            .hero-image {
+                order: -1;
+            }
+
+            .dominio-content {
                 grid-template-columns: 1fr;
             }
-            .process-steps {
-                flex-direction: column;
-                gap: 30px;
+
+            .plan-card.premium {
+                transform: scale(1);
+            }
+
+            .plan-card.premium:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 14px 24px;
+                font-size: 0.9rem;
+            }
+
+            .dominio-price .price {
+                font-size: 2.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-icon">
-                <i class="fas fa-envelope-open-text"></i>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../" class="logo">
+                    <i class="fas fa-link"></i>
+                    Markentas
+                </a>
+                <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20servicio%20de%20cat%C3%A1logo%20digital" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Consultar
+                </a>
             </div>
-            <h1>MARKENTAS</h1>
-            <p>Tarjetas digitales interactivas diseñadas para crear experiencias memorables. Cada invitación es única, elegante y personalizada para tu evento especial.</p>
-            <div class="hero-buttons">
-                <a href="#quince" class="hero-cta">Ver Diseños</a>
-                <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20solicitar%20una%20tarjeta" target="_blank" class="hero-cta-secondary">
-                    <i class="fab fa-whatsapp"></i> Consultar
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Tu Negocio en <span>un Link</span></h1>
+                    <p>Catálogo digital autogestionable para tu negocio. Actualizá precios, productos y imágenes desde Google Sheets. Tus clientes te encuentran fácil y piden por WhatsApp.</p>
+                    <div class="hero-buttons">
+                        <a href="#planes" class="btn btn-primary">Quiero mi Catálogo</a>
+                        <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20servicio" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Hablar con Asesor
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=500&fit=crop" alt="Catálogo Digital">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema Section -->
+    <section class="problema" id="problema">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Te pasa esto?</h2>
+                <p>Estos son los problemas comunes que enfrentan los negocios locales</p>
+            </div>
+            <div class="problema-grid">
+                <div class="problema-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Precios Desactualizados</h3>
+                    <p>Cambiar precios implica reimprimir folletos o actualizar múltiples plataformas manualmente.</p>
+                </div>
+                <div class="problema-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>Consultas Repetitivas</h3>
+                    <p>Los clientes preguntan lo mismo una y otra vez: precios, productos disponibles, horarios.</p>
+                </div>
+                <div class="problema-card">
+                    <i class="fas fa-image"></i>
+                    <h3>Falta de Imagen Profesional</h3>
+                    <p>Sin presencia digital atractiva, perdés clientes que buscan negocios confiables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solucion Section -->
+    <section class="solucion" id="solucion">
+        <div class="container">
+            <div class="section-header">
+                <h2>La Solución</h2>
+                <p>Un catálogo digital que se gestiona solo</p>
+            </div>
+            <div class="solucion-grid">
+                <div class="solucion-card">
+                    <div class="solucion-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h3>Control desde Google Sheets</h3>
+                    <p>Actualizá tu catálogo desde una hoja simple. Sin programar, sin complicaciones.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="solucion-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Actualización Automática</h3>
+                    <p>Cada cambio que hacés en la hoja se refleja automáticamente en tu web.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="solucion-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>Pedido por WhatsApp</h3>
+                    <p>Tus clientes pueden pedir directamente desde el catálogo con un clic.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="solucion-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Alojamiento Estable</h3>
+                    <p>Tu catálogo está siempre disponible. Sin caidas, sin mantenimiento complejo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dominio Section -->
+    <section class="dominio" id="dominio">
+        <div class="container">
+            <div class="dominio-content">
+                <div class="dominio-text">
+                    <h2>Tu Dominio, Tu Marca</h2>
+                    <p>Tu catálogo digital tendrá una dirección web profesional que facilitará que tus clientes te encuentren y compartan.</p>
+                    <ul class="dominio-features">
+                        <li><i class="fas fa-check-circle"></i> Publicación inicial en markentas.github.io/tu_negocio</li>
+                        <li><i class="fas fa-check-circle"></i> Asesoría gratuita para adquirir dominio propio</li>
+                        <li><i class="fas fa-check-circle"></i> El dominio corre por cuenta del cliente</li>
+                        <li><i class="fas fa-check-circle"></i> Configuración técnica incluida</li>
+                    </ul>
+                </div>
+                <div class="dominio-price">
+                    <div class="price">$20.000</div>
+                    <div class="price-label">Pago único</div>
+                    <p>Configuración y gestión técnica inicial</p>
+                    <a href="#planes" class="btn" style="background: white; color: var(--primary); margin-top: 20px;">Ver Planes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planes Section -->
+    <section class="planes" id="planes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planes</h2>
+                <p>Elegí el plan que mejor se adapte a tu negocio</p>
+            </div>
+            <div class="planes-grid">
+                <div class="plan-card">
+                    <h3 class="plan-name">Plan Base</h3>
+                    <div class="plan-price">$50.000<span>/mes</span></div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Hasta 20 productos</li>
+                        <li><i class="fas fa-check"></i> Galería de imágenes</li>
+                        <li><i class="fas fa-check"></i> Slider promocional</li>
+                        <li><i class="fas fa-check"></i> Mapa de ubicación</li>
+                        <li><i class="fas fa-check"></i> Redes sociales</li>
+                        <li><i class="fas fa-check"></i> Botón de contacto</li>
+                        <li><i class="fas fa-check"></i> Botón WhatsApp</li>
+                        <li><i class="fas fa-check"></i> Mantenimiento incluido</li>
+                        <li class="missing"><i class="fas fa-times"></i> Personalización por eventos</li>
+                        <li class="missing"><i class="fas fa-times"></i> Cambios de diseño</li>
+                        <li class="missing"><i class="fas fa-times"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20el%20Plan%20Base%20de%20Markentas" target="_blank" class="btn btn-primary">Elegir Plan Base</a>
+                </div>
+                <div class="plan-card premium">
+                    <span class="plan-badge">Más Popular</span>
+                    <h3 class="plan-name">Plan Premium</h3>
+                    <div class="plan-price">$80.000<span>/mes</span></div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Hasta 50 productos</li>
+                        <li><i class="fas fa-check"></i> Galería de imágenes</li>
+                        <li><i class="fas fa-check"></i> Slider promocional</li>
+                        <li><i class="fas fa-check"></i> Mapa de ubicación</li>
+                        <li><i class="fas fa-check"></i> Redes sociales</li>
+                        <li><i class="fas fa-check"></i> Botón de contacto</li>
+                        <li><i class="fas fa-check"></i> Botón WhatsApp</li>
+                        <li><i class="fas fa-check"></i> Mantenimiento incluido</li>
+                        <li><i class="fas fa-check"></i> Personalización por eventos</li>
+                        <li><i class="fas fa-check"></i> Cambios de diseño</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20el%20Plan%20Premium%20de%20Markentas" target="_blank" class="btn btn-primary">Elegir Plan Premium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia Section -->
+    <section class="garantia" id="garantia">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestra Garantía</h2>
+                <p>Te acompañamos sin compromisos largos</p>
+            </div>
+            <div class="garantia-grid">
+                <div class="garantia-card">
+                    <i class="fas fa-file-lines"></i>
+                    <h3>Sin Contratos Largos</h3>
+                    <p>Podes cancelar cuando quieras. Sin penalidades ni letraschicas.</p>
+                </div>
+                <div class="garantia-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Dominio a Tu Nombre</h3>
+                    <p>El dominio es 100% tuyo. Tenés el control total de tu presencia digital.</p>
+                </div>
+                <div class="garantia-card">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Independencia Total</h3>
+                    <p>Tu catálogo funciona independientemente. No dependés de plataformas que pueden desaparecer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clientes Section -->
+    <section class="clientes" id="clientes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Clientes</h2>
+                <p>Conocenos a través de nuestros proyectos</p>
+            </div>
+            <div class="clientes-grid">
+                <a href="../organogold/" target="_blank" class="cliente-card">
+                    <div class="cliente-image">
+                        <img src="../organogold/img/organogold-preview.png" alt="OrganoGold">
+                    </div>
+                    <div class="cliente-info">
+                        <h3>OrganoGold</h3>
+                        <p>Café Premium</p>
+                    </div>
+                </a>
+                <a href="../dulcesmazza/" target="_blank" class="cliente-card">
+                    <div class="cliente-image">
+                        <img src="../dulcesmazza/img/dulcesmazza-preview.png" alt="Dulces Mazza">
+                    </div>
+                    <div class="cliente-info">
+                        <h3>Dulces Mazza</h3>
+                        <p>Masas Caseras</p>
+                    </div>
+                </a>
+                <a href="../invitacionesdigitales/" target="_blank" class="cliente-card">
+                    <div class="cliente-image">
+                        <img src="../invitacionesdigitales/img/invitacion-preview.png" alt="Invitaciones Digitales">
+                    </div>
+                    <div class="cliente-info">
+                        <h3>Invitaciones Digitales</h3>
+                        <p>Invitaciones para Eventos</p>
+                    </div>
                 </a>
             </div>
         </div>
     </section>
 
-        <!-- 15 Años -->
-    <section class="section category" id="quince">
-        <div class="section-header">
-            <h2 class="section-title">Mis 15 Años</h2>
-            <p class="section-subtitle">Diseños exclusivos para quinceañeras</p>
-        </div>
-        
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/maria.png" alt="María" class="card-img">
-                    <span class="card-badge">Elegante</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">María</h3>
-                    <p class="card-desc">Diseño en tonos lavanda y violeta con elementos elegantes y sofisticados.</p>
-                    <a href="maria" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/juana.png" alt="Juana" class="card-img">
-                    <span class="card-badge">Noir</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Juana</h3>
-                    <p class="card-desc">Estilo negro y dorado con líneas elegantes y elementos dorados.</p>
-                    <a href="juana" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/rebeca.png" alt="Rebeca" class="card-img">
-                    <span class="card-badge">Romántico</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Rebeca</h3>
-                    <p class="card-desc">Diseño en tonos rosa y champange con elementos suaves y delicados.</p>
-                    <a href="rebeca" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/micaela.png" alt="Micaela" class="card-img">
-                    <span class="card-badge">Floral</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Micaela</h3>
-                    <p class="card-desc">Estilo floral con tonos coral y lavanda, delicado y encantador.</p>
-                    <a href="micaela" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <!-- 18 Años -->
-    <section class="section category" id="dieciocho">
-        <div class="section-header">
-            <h2 class="section-title">Mis 18 Años</h2>
-            <p class="section-subtitle">Celebraciones de mayoría de edad</p>
-        </div>
-        
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/omar.png" alt="Omar" class="card-img">
-                    <span class="card-badge">Elegante</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Omar</h3>
-                    <p class="card-desc">Diseño azul noche con acentos cyan, moderno y sofisticado.</p>
-                    <a href="omar" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/carlos.png" alt="Carlos" class="card-img">
-                    <span class="card-badge">Urbano</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Carlos</h3>
-                    <p class="card-desc">Estilo geométrico negro y dorado, minimalista y elegante.</p>
-                    <a href="carlos" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/fernando.png" alt="Fernando" class="card-img">
-                    <span class="card-badge">Natural</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Fernando</h3>
-                    <p class="card-desc">Diseño orgánico en tonos verdes, sutil y con elementos naturales.</p>
-                    <a href="fernando" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/julian.png" alt="Julian" class="card-img">
-                    <span class="card-badge">Náutico</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Julian</h3>
-                    <p class="card-desc">Estilo náutico azul y blanco, fresco y con elementos marítimos.</p>
-                    <a href="julian" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bodas -->
-    <section class="section category" id="bodas">
-        <div class="section-header">
-            <h2 class="section-title">Bodas</h2>
-            <p class="section-subtitle">Invitaciones para el día más especial</p>
-        </div>
-        
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/boda-beso.png" alt="Boda Beso" class="card-img">
-                    <span class="card-badge">Romántico</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Boda Beso</h3>
-                    <p class="card-desc">Diseño romántico con elementos de amor y pasión.</p>
-                    <a href="boda-beso" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/boda-bosque.png" alt="Boda Bosque" class="card-img">
-                    <span class="card-badge">Natural</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Boda Bosque</h3>
-                    <p class="card-desc">Estilo boho con tonos naturales y elementos florales.</p>
-                    <a href="boda-bosque" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/boda-minimalista.png" alt="Boda Minimalista" class="card-img">
-                    <span class="card-badge">Minimalista</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Boda Minimalista</h3>
-                    <p class="card-desc">Diseño limpio y elegante con simplicidad sofisticada.</p>
-                    <a href="boda-minimalista" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image">
-                    <img src="img/boda-signature.png" alt="Boda Signature" class="card-img">
-                    <span class="card-badge">Signature</span>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Boda Signature</h3>
-                    <p class="card-desc">Estilo clásico y elegante con elementos tradicionales.</p>
-                    <a href="boda-signature" class="card-link" target="_blank">Ver Tarjeta <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Módulos -->
-    <section class="section features" id="modulos">
-        <div class="section-header">
-            <h2 class="section-title">Módulos Incluidos</h2>
-            <p class="section-subtitle">Todo lo que necesitas en una invitación</p>
-        </div>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-home"></i></div>
-                <h3 class="feature-title">Hero</h3>
-                <p class="feature-desc">Portada de entrada con imagen de fondo y botón de descubrir</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-hourglass-half"></i></div>
-                <h3 class="feature-title">Countdown</h3>
-                <p class="feature-desc">Contador regresivo animado hacia el gran día</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-user-friends"></i></div>
-                <h3 class="feature-title">Padres</h3>
-                <p class="feature-desc">Sección de padres o bendición de los novios</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-images"></i></div>
-                <h3 class="feature-title">Galería</h3>
-                <p class="feature-desc">Slider de fotos del cumpleañero o pareja</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
-                <h3 class="feature-title">Fecha</h3>
-                <p class="feature-desc">Información del evento con fecha y hora</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-quote-left"></i></div>
-                <h3 class="feature-title">Frase</h3>
-                <p class="feature-desc">Mensaje personalizado o cita especial</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <h3 class="feature-title">Ubicación</h3>
-                <p class="feature-desc">Dirección con enlace directo a Google Maps</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-tshirt"></i></div>
-                <h3 class="feature-title">Dress Code</h3>
-                <p class="feature-desc">Código de vestimenta con paleta de colores</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                <h3 class="feature-title">Itinerario</h3>
-                <p class="feature-desc">Agenda del evento con horarios y actividades</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-gift"></i></div>
-                <h3 class="feature-title">Regalos</h3>
-                <p class="feature-desc">Información de regalos con datos bancarios</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fab fa-instagram"></i></div>
-                <h3 class="feature-title">Instagram</h3>
-                <p class="feature-desc">Hashtag del evento para compartir fotos</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-music"></i></div>
-                <h3 class="feature-title">Música</h3>
-                <p class="feature-desc">Audio de fondo con botón play/pause</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proceso -->
-    <section class="section process">
-        <div class="section-header">
-            <h2 class="section-title">¿Cómo Trabajamos?</h2>
-            <p class="section-subtitle">Proceso simple y personalizado</p>
-        </div>
-        
-        <div class="process-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3 class="step-title">Eliges el Diseño</h3>
-                <p class="step-desc">Selecciona una de nuestras plantillas o solicitá uno personalizado</p>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3 class="step-title">Personalizamos</h3>
-                <p class="step-desc">Adaptamos colores, textos, fotos y música a tu gusto</p>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3 class="step-title">Compartís</h3>
-                <p class="step-desc">Recibís el enlace para compartir con tus invitados</p>
-            </div>
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>¿Listo para digitalizar tu negocio?</h2>
+            <p>Te ayudamos a crear tu catálogo digital en pocos días</p>
+            <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20empezar%20con%20Markentas" target="_blank" class="btn">
+                <i class="fab fa-whatsapp"></i>
+                Contactanos Ahora
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">MARKENTAS</div>
-        <p class="footer-text">Visita también:</p>
-        
-        <div class="footer-projects">
-            <a href="../dulcesmazza" target="_blank" class="footer-project">
-                <div class="footer-project-icon">
-                    <img src="img/dulcesmazza.svg" alt="Dulces Mazza">
-                </div>
-                <span class="footer-project-name">Dulces Mazza</span>
-                <span class="footer-project-label">Masas Caseras</span>
-            </a>
-            <a href="../organogold" target="_blank" class="footer-project">
-                <div class="footer-project-icon">
-                    <img src="img/organogold.svg" alt="OrganoGold">
-                </div>
-                <span class="footer-project-name">OrganoGold</span>
-                <span class="footer-project-label">Café Premium</span>
-            </a>
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fas fa-link"></i> Markentas
+            </div>
+            <div class="footer-social">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-contact">
+                <a href="https://wa.me/5493873407054" target="_blank">+54 9 387 3407 054</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Markentas. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-        <i class="fas fa-chevron-up"></i>
-    </a>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20solicitar%20una%20tarjeta" target="_blank" class="whatsapp-float" id="whatsappBtn">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const backToTopBtn = document.getElementById('backToTop');
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            const designsSection = document.getElementById('quince');
-
-            function checkVisibility() {
-                const designsPosition = designsSection.getBoundingClientRect().top;
-                const screenHeight = window.innerHeight;
-                
-                // Mostrar botones cuando la sección de diseños esté a 100px de la parte superior de la pantalla
-                if (designsPosition < screenHeight - 100) {
-                    backToTopBtn.classList.add('visible');
-                    whatsappBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                    whatsappBtn.classList.remove('visible');
-                }
-            }
-
-            // Verificar al cargar y al hacer scroll
-            checkVisibility();
-            window.addEventListener('scroll', checkVisibility);
-        });
-    </script>
 </body>
 </html>
