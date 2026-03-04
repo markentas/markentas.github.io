@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Markentas: Creamos tu catálogo digital autogestionable. Controlá tus precios desde Google Sheets y recibí pedidos por WhatsApp." />
-    <meta name="keywords" content="markentas, catálogo digital, salvador mazza, ventas por whatsapp, diseño web economico, google sheets a web, ecommerce local, soluciones" />
+    <meta name="description" content="Markentas: Catálogos digitales autogestionables para comercios. Administrá tus productos desde tu propio panel y recibí pedidos directos por WhatsApp." />
+    <meta name="keywords" content="markentas, catálogo digital, salvador mazza, ventas por whatsapp, panel de control, ecommerce local, diseño web profesional, catálogo autogestionable" />
     <meta name="author" content="Markentas" />
 
+    <link rel="canonical" href="https://markentas.com/" />
+
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://markentas.github.io/" />
-    <meta property="og:title" content="Markentas | Tu Negocio en un Link" />
-    <meta property="og:description" content="Digitalizá tu comercio hoy. Catálogos autogestionables, fáciles de usar y listos para vender por WhatsApp." />
-    <meta property="og:image" content="https://markentas.github.io/img/markentas-preview.png" /> 
+    <meta property="og:url" content="https://markentas.com/" />
+    <meta property="og:title" content="Markentas | Tu Catálogo con Panel de Control" />
+    <meta property="og:description" content="Digitalizá tu stock. Gestioná precios y productos desde tu panel exclusivo y vendé más por WhatsApp." />
+    <meta property="og:image" content="https://markentas.com/img/markentas-preview.png" /> 
 
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://markentas.github.io/" />
-    <meta property="twitter:title" content="Markentas | Catálogos Digitales Autogestionables" />
-    <meta property="twitter:description" content="Llevá tu negocio al siguiente nivel con un catálogo profesional gestionado desde tu celular." />
-    <meta property="twitter:image" content="https://markentas.github.io/img/markentas-preview.png" />
-    <meta name="twitter:image:src" content="https://markentas.github.io/img/markentas-preview.png" />
-    
-    <title>Markentas - Catálogo Digital Autogestionable</title>
+    <meta property="twitter:url" content="https://markentas.com/" />
+    <meta property="twitter:title" content="Markentas | Gestión Profesional de Ventas" />
+    <meta property="twitter:description" content="Llevá tu negocio al siguiente nivel con un catálogo inteligente y panel de administración propio." />
+    <meta property="twitter:image" content="https://markentas.com/img/markentas-preview.png" />
+        
+    <title>Markentas - Soluciones Digitales</title>
 
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
@@ -266,18 +268,35 @@
         }
 
         .problema-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
         }
 
         .problema-card {
+            flex: 0 0 calc(33.333% - 30px);
+            max-width: calc(33.333% - 30px);
             padding: 35px;
             background: var(--light);
             border-radius: 16px;
             text-align: center;
             transition: all 0.3s ease;
             border: 2px solid transparent;
+        }
+
+        @media (max-width: 968px) {
+            .problema-card {
+                flex: 0 0 calc(50% - 30px);
+                max-width: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .problema-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
         }
 
         .problema-card:hover {
@@ -540,16 +559,33 @@
         }
 
         .garantia-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .garantia-card {
+            flex: 0 0 calc(33.333% - 30px);
+            max-width: calc(33.333% - 30px);
             text-align: center;
             padding: 30px;
+        }
+
+        @media (max-width: 968px) {
+            .garantia-card {
+                flex: 0 0 calc(50% - 30px);
+                max-width: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .garantia-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
         }
 
         .garantia-card i {
@@ -576,14 +612,17 @@
         }
 
         .clientes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .cliente-card {
+            flex: 0 0 calc(33.333% - 30px);
+            max-width: calc(33.333% - 30px);
             background: var(--white);
             border-radius: 16px;
             overflow: hidden;
@@ -591,6 +630,20 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: block;
+        }
+
+        @media (max-width: 968px) {
+            .cliente-card {
+                flex: 0 0 calc(50% - 30px);
+                max-width: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .cliente-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
         }
 
         .cliente-card:hover {
@@ -790,7 +843,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="../" class="logo">
+                <a href="/" class="logo">
                     <i class="fas fa-link"></i>
                     Markentas
                 </a>
@@ -808,7 +861,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Tu Negocio en <span>un Link</span></h1>
-                    <p>Catálogo digital autogestionable para tu negocio. Actualizá precios, productos y imágenes desde Google Sheets. Tus clientes te encuentran fácil y piden por WhatsApp.</p>
+                    <p>Catálogo digital autogestionable para tu negocio. Administrá tus productos, precios e imágenes desde tu propio panel de control. Tus clientes te encuentran fácil y te piden por WhatsApp.</p>
                     <div class="hero-buttons">
                         <a href="#planes" class="btn btn-primary">Quiero mi Catálogo</a>
                         <a href="https://wa.me/5493873407054?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20servicio" target="_blank" class="btn btn-whatsapp">
@@ -852,40 +905,40 @@
     </section>
 
     <!-- Solucion Section -->
-    <section class="solucion" id="solucion">
+     <section class="solucion" id="solucion">
         <div class="container">
             <div class="section-header">
                 <h2>La Solución</h2>
-                <p>Un catálogo digital que se gestiona solo</p>
+                <p>Un sistema inteligente diseñado para que vendas más sin complicaciones técnicas</p>
             </div>
             <div class="solucion-grid">
                 <div class="solucion-card">
                     <div class="solucion-icon">
-                        <i class="fas fa-table"></i>
+                        <i class="fas fa-user-cog"></i>
                     </div>
-                    <h3>Control desde Google Sheets</h3>
-                    <p>Actualizá tu catálogo desde una hoja simple. Sin programar, sin complicaciones.</p>
+                    <h3>Panel de Control Propio</h3>
+                    <p>Accedé a tu administrador exclusivo desde cualquier dispositivo. Gestioná tus productos de forma profesional.</p>
                 </div>
                 <div class="solucion-card">
                     <div class="solucion-icon">
-                        <i class="fas fa-sync"></i>
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Actualización Automática</h3>
-                    <p>Cada cambio que hacés en la hoja se refleja automáticamente en tu web.</p>
+                    <h3>Gestión en Tiempo Real</h3>
+                    <p>Cualquier cambio de precio o stock que realices en tu panel se actualiza al instante en tu catálogo online.</p>
                 </div>
                 <div class="solucion-card">
                     <div class="solucion-icon">
                         <i class="fab fa-whatsapp"></i>
                     </div>
-                    <h3>Pedido por WhatsApp</h3>
-                    <p>Tus clientes pueden pedir directamente desde el catálogo con un clic.</p>
+                    <h3>Pedidos Directos</h3>
+                    <p>Tus clientes eligen lo que quieren y te envían el pedido detallado directamente a tu WhatsApp.</p>
                 </div>
                 <div class="solucion-card">
                     <div class="solucion-icon">
-                        <i class="fas fa-server"></i>
+                        <i class="fas fa-cloud"></i>
                     </div>
-                    <h3>Alojamiento Estable</h3>
-                    <p>Tu catálogo está siempre disponible. Sin caidas, sin mantenimiento complejo.</p>
+                    <h3>Infraestructura Robusta</h3>
+                    <p>Tu negocio respaldado por la red global de Cloudflare. Máxima velocidad y seguridad garantizada 24/7.</p>
                 </div>
             </div>
         </div>
@@ -894,22 +947,26 @@
     <!-- Dominio Section -->
     <section class="dominio" id="dominio">
         <div class="container">
+            <div class="section-header">
+                <h2>Tu Marca, Tu Identidad</h2>
+                <p>Tu catálogo digital tendrá una dirección web profesional que facilitará que tus clientes te encuentren y compartan.</p>
+            </div>
             <div class="dominio-content">
                 <div class="dominio-text">
-                    <h2>Tu Dominio, Tu Marca</h2>
-                    <p>Tu catálogo digital tendrá una dirección web profesional que facilitará que tus clientes te encuentren y compartan.</p>
+                    <h2>Tu Espacio en la Red</h2>
+                    <p>En Markentas SA nos encargamos de que tu negocio se vea profesional desde el primer día con una infraestructura de nivel mundial.</p>
                     <ul class="dominio-features">
-                        <li><i class="fas fa-check-circle"></i> Publicación inicial en markentas.github.io/tu_negocio</li>
-                        <li><i class="fas fa-check-circle"></i> Asesoría gratuita para adquirir dominio propio</li>
-                        <li><i class="fas fa-check-circle"></i> El dominio corre por cuenta del cliente</li>
-                        <li><i class="fas fa-check-circle"></i> Configuración técnica incluida</li>
+                        <li><i class="fas fa-check-circle"></i> URL Profesional: <strong>tunegocio.markentas.com</strong></li>
+                        <li><i class="fas fa-check-circle"></i> Panel de administración exclusivo para tu stock</li>
+                        <li><i class="fas fa-check-circle"></i> Seguridad SSL (Candadito) activa siempre</li>
+                        <li><i class="fas fa-check-circle"></i> Opción de dominio propio (ej: .com, .ar)</li>
                     </ul>
                 </div>
                 <div class="dominio-price">
                     <div class="price">$20.000</div>
-                    <div class="price-label">Pago único</div>
-                    <p>Configuración y gestión técnica inicial</p>
-                    <a href="#planes" class="btn" style="background: white; color: var(--primary); margin-top: 20px;">Ver Planes</a>
+                    <div class="price-label">Configuración Inicial</div>
+                    <p>Puesta en marcha de tu panel y despliegue técnico</p>
+                    <a href="#planes" class="btn" style="background: white; color: var(--primary); margin-top: 20px;">Ver Planes Mensuales</a>
                 </div>
             </div>
         </div>
@@ -1001,27 +1058,29 @@
                 <p>Conocenos a través de nuestros proyectos</p>
             </div>
             <div class="clientes-grid">
-                <a href="../organogold/" target="_blank" class="cliente-card">
+                <a href="https://markentas.github.io/organogold/" target="_blank" class="cliente-card">
                     <div class="cliente-image">
-                        <img src="../organogold/img/organogold-preview.png" alt="OrganoGold">
+                        <img src="https://markentas.github.io/organogold/img/organogold-preview.png" alt="OrganoGold">
                     </div>
                     <div class="cliente-info">
                         <h3>OrganoGold</h3>
                         <p>Café Premium</p>
                     </div>
                 </a>
-                <a href="../dulcesmazza/" target="_blank" class="cliente-card">
+
+                <a href="https://markentas.github.io/dulcesmazza/" target="_blank" class="cliente-card">
                     <div class="cliente-image">
-                        <img src="../dulcesmazza/img/dulcesmazza-preview.png" alt="Dulces Mazza">
+                        <img src="https://markentas.github.io/dulcesmazza/img/dulcesmazza-preview.png" alt="Dulces Mazza">
                     </div>
                     <div class="cliente-info">
                         <h3>Dulces Mazza</h3>
                         <p>Masas Caseras</p>
                     </div>
                 </a>
-                <a href="../invitacionesdigitales/" target="_blank" class="cliente-card">
+
+                <a href="https://markentas.github.io/invitacionesdigitales/" target="_blank" class="cliente-card">
                     <div class="cliente-image">
-                        <img src="../invitacionesdigitales/img/invitacion-preview.png" alt="Invitaciones Digitales">
+                        <img src="https://markentas.github.io/invitacionesdigitales/img/invitacion-preview.png" alt="Invitaciones Digitales">
                     </div>
                     <div class="cliente-info">
                         <h3>Invitaciones Digitales</h3>
@@ -1048,16 +1107,22 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <i class="fas fa-link"></i> Markentas
+                <a href="/" style="color: inherit; text-decoration: none;">
+                    <i class="fas fa-link"></i> Markentas
+                </a>
             </div>
+            
             <div class="footer-social">
                 <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/5493873407054" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
+
             <div class="footer-contact">
+                <p>Salvador Mazza, Salta</p>
                 <a href="https://wa.me/5493873407054" target="_blank">+54 9 387 3407 054</a>
             </div>
+
             <div class="footer-copy">
                 &copy; 2026 Markentas. Todos los derechos reservados.
             </div>
