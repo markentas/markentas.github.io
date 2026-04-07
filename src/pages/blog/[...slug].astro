@@ -31,7 +31,7 @@ const { Content } = await render(post);
 		<article>
 			{post.data.heroImage && (
 				<div class="hero-image">
-					<img src={post.data.heroImage} alt="" />
+					<img src={post.data.heroImage} alt="" loading="eager" fetchpriority="high" />
 				</div>
 			)}
 			<div class="content">
