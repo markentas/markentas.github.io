@@ -58,3 +58,8 @@ Thumbs.db
 # ===========================================
 *.tmp
 skills-lock.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
