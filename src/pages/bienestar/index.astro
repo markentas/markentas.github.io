@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import HeroBienestar from '../../components/bienestar/HeroBienestar.astro';
+import SectionCiencia from '../../components/bienestar/SectionCiencia.astro';
+import SectionDiferenciadores from '../../components/bienestar/SectionDiferenciadores.astro';
+import SectionProductos from '../../components/bienestar/SectionProductos.astro';
+import CTABienestar from '../../components/bienestar/CTABienestar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout 
+  title="Bienestar y Café Inteligente" 
+  description="Te cuento cómo el café con Ganoderma se convirtió en mi aliado para programar, estudiar y organizar eventos sin el bajón del café tradicional."
+>
+  <Navbar />
+  <main>
+    <HeroBienestar />
+    <SectionCiencia />
+    <SectionDiferenciadores />
+    <SectionProductos />
+    <CTABienestar />
+  </main>
+  <Footer />
+</Layout>

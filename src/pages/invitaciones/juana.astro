@@ -1,0 +1,367 @@
+---
+import InvitacionLayout from '../../layouts/InvitacionLayout.astro';
+
+const props = {
+  nombre: 'Juana',
+  tipo: '15-anos' as const,
+  titulo: 'Mis 15 Años',
+  fecha: '18 DE ABRIL DE 2026',
+  fechaData: '2026-04-18',
+  hora: '21:00',
+  lugar: 'Salón Black',
+  direccion: 'Av. Central 890, Ciudad',
+  padres: ['Carlos López', 'María González'],
+  frase: '"Que este nuevo capítulo de mi vida esté lleno de alegría, amor y momentos memorables junto a quienes más quiero."',
+  dresscode: 'Elegante - Formal',
+  dresscodeColores: ['black', 'white', 'gold', 'silver'],
+  instagramHashtag: 'Mis15Juana',
+  invitacionId: 'juana',
+  whatsappMensaje: 'Hola, me contacto desde la tarjeta Juana, me gustó mucho, quisiera más información',
+  imagenes: [
+    { src: '/invitaciones/juana/img/girl1.jpg', alt: 'Juana', nombre: 'JUANA LÓPEZ', subtitle: '15 años de elegancia' },
+    { src: '/invitaciones/juana/img/girl2.jpg', alt: 'Juana', nombre: 'JUANA LÓPEZ', subtitle: 'Sus momentos' },
+    { src: '/invitaciones/juana/img/girl3.jpg', alt: 'Juana', nombre: 'JUANA LÓPEZ', subtitle: 'Lista para brillar' },
+  ],
+  itinerarios: [
+    { hora: '21:00 HS', actividad: 'Recepción', detalle: 'Bienvenida a los invitados', icono: '🥂' },
+    { hora: '21:30 HS', actividad: 'Inicio de la Fiesta', detalle: 'Primer vals y coreografía', icono: '💃' },
+    { hora: '23:00 HS', actividad: 'Corte de Torta', detalle: 'El momento más dulce', icono: '🍰' },
+    { hora: '00:00 HS', actividad: 'Quinceañero', detalle: 'El momento esperado', icono: '🎊' },
+  ],
+  datosBancarios: {
+    banco: 'Banco Provincia',
+    alias: 'JUANA.15',
+    titular: 'Juana López',
+  },
+};
+---
+
+<InvitacionLayout 
+  title={`${props.nombre} - ${props.titulo}`}
+  description={`Invitación digital para los 15 años de ${props.nombre}`}
+  nombre={props.nombre}
+  tipo={props.tipo}
+  invitacionId={props.invitacionId}
+>
+  <!-- Notificaciones -->
+  <div id="notificaciones"></div>
+
+  <!-- Audio -->
+  <audio id="audio" src="/invitaciones/juana/audio/audio.mp3" loop></audio>
+
+  <!-- Botón música -->
+  <button id="btn-musica" class="btn-musica" onclick="toggleMusica()">
+    <i class="fas fa-play"></i>
+  </button>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <p class="hero-date">{props.fecha}</p>
+      <p class="hero-subtitle">Mis Quince Años</p>
+      <h1 class="hero-title">{props.nombre}</h1>
+      <p class="hero-number">15</p>
+      <p class="hero-name">LÓPEZ</p>
+      <a href="#padres" class="hero-btn" onclick="iniciarMusica(); document.getElementById('fotos').scrollIntoView({behavior: 'smooth'}); return false;">Descubrir</a>
+    </div>
+  </section>
+
+  <!-- Padres -->
+  <section id="padres" class="padres">
+    <div class="padres-container">
+      <p class="padres-text">Con la bendicíon de</p>
+      <p class="padres-names">{props.padres[0]} <span>&</span> {props.padres[1]}</p>
+    </div>
+  </section>
+
+  <!-- Fotos Slider -->
+  <section id="fotos" class="fotos">
+    <h2 class="fotos-title">La cumpleañera</h2>
+    <div class="slider-container">
+      <div class="slider-wrapper" id="sliderWrapper">
+        {props.imagenes.map((img, index) => (
+          <div class="slider-slide">
+            <img src={img.src} alt={img.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+            <div class="slider-overlay">
+              <p class="slider-name">{img.nombre}</p>
+              <p class="slider-subtitle">{img.subtitle}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="slider-nav">
+      {props.imagenes.map((_, index) => (
+        <div class={`slider-dot ${index === 0 ? 'active' : ''}`} onclick={`goToSlide(${index})`}></div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Fecha -->
+  <section id="fecha" class="fecha">
+    <div class="fecha-container">
+      <div class="fecha-icon">📅</div>
+      <p class="fecha-title">Cuando</p>
+      <p class="fecha-text">18 de Abril</p>
+      <p class="fecha-detail">A las {props.hora} horas</p>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section id="countdown" class="countdown" data-fecha={props.fechaData} data-hora={props.hora}>
+    <h2 class="countdown-title">La cuenta regresiva</h2>
+    <div class="countdown-timer">
+      <div class="count-block">
+        <div class="count-box">
+          <span class="count-number" id="days">00</span>
+        </div>
+        <span class="count-label">Días</span>
+      </div>
+      <div class="count-block">
+        <div class="count-box">
+          <span class="count-number" id="hours">00</span>
+        </div>
+        <span class="count-label">Horas</span>
+      </div>
+      <div class="count-block">
+        <div class="count-box">
+          <span class="count-number" id="minutes">00</span>
+        </div>
+        <span class="count-label">Min</span>
+      </div>
+      <div class="count-block">
+        <div class="count-box">
+          <span class="count-number" id="seconds">00</span>
+        </div>
+        <span class="count-label">Seg</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frase -->
+  <section id="frase" class="frase">
+    <div class="frase-container">
+      <p class="frase-text">{props.frase}</p>
+      <p class="frase-autor">— {props.nombre}</p>
+    </div>
+  </section>
+
+  <!-- Ubicación -->
+  <section id="ubicacion" class="ubicacion">
+    <div class="ubicacion-container">
+      <div class="ubicacion-icon">📍</div>
+      <p class="ubicacion-titulo">Donde</p>
+      <p class="ubicacion-lugar">{props.lugar}</p>
+      <p class="ubicacion-detalle">{props.direccion}</p>
+      <a href="#" onclick="mostrarDemo(); return false;" class="ubicacion-btn">Ver en Mapa</a>
+    </div>
+  </section>
+
+  <!-- Dress Code -->
+  <section id="dresscode" class="dresscode">
+    <div class="dresscode-container">
+      <h2 class="dresscode-title">Dress Code</h2>
+      <p class="dresscode-text">{props.dresscode}</p>
+      <div class="dresscode-colors">
+        {props.dresscodeColores.map(color => (
+          <div class={`color-swatch ${color}`}></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Itinerario -->
+  <section id="itinerario" class="itinerario">
+    <div class="itinerario-container">
+      <h2 class="itinerario-title">Itinerario</h2>
+      {props.itinerarios.map(item => (
+        <div class="itinerario-item">
+          <div class="itinerario-icon">{item.icono}</div>
+          <div class="itinerario-content">
+            <p class="itinerario-hora">{item.hora}</p>
+            <p class="itinerario-actividad">{item.actividad}</p>
+            <p class="itinerario-detalle">{item.detalle}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Regalos -->
+  <section id="regalos" class="regalos">
+    <div class="regalos-container">
+      <div class="regalos-icon">🎁</div>
+      <h2 class="regalos-titulo">Regalos</h2>
+      <p class="regalos-texto">
+        Tu presencia es el mejor regalo. Si deseas hacerme un
+        presente, puedes hacerlo en efectivo o transferir a la
+        cuenta que te proporcionaré al confirmar.
+      </p>
+      <button class="regalos-btn" onclick="openModal()">
+        Ver Datos Bancarios
+      </button>
+    </div>
+  </section>
+
+  <!-- Galería de Invitados -->
+  <section id="galeria" class="instagram">
+    <div class="instagram-container">
+      <div class="instagram-icon">📸</div>
+      <h2 class="instagram-titulo">Galería de Invitados</h2>
+      <p class="instagram-texto">
+        Comparte tu foto de la fiesta conmigo
+      </p>
+      <div class="galeria-grid" id="galeriaGrid"></div>
+      <div class="galeria-upload">
+        <input type="file" id="galeriaInput" accept="image/*" multiple hidden />
+        <button class="instagram-btn" onclick="document.getElementById('galeriaInput').click()">
+          📷 Subir mis fotos
+        </button>
+        <div class="galeria-preview" id="galeriaPreview" style="display: none">
+          <div class="galeria-preview-grid" id="galeriaPreviewGrid"></div>
+          <div class="galeria-preview-buttons">
+            <button class="galeria-submit" id="btnEnviar" onclick="subirFotos()">Enviar todas</button>
+            <button class="galeria-cancel" onclick="cancelarFotos()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+      <p class="instagram-hashtag-titulo">Usa el hashtag</p>
+      <p class="instagram-hashtag">#{props.instagramHashtag}</p>
+    </div>
+  </section>
+
+  <!-- Especial -->
+  <section id="especial" class="especial">
+    <div class="especial-container">
+      <div class="especial-icon">✨</div>
+      <p class="especial-texto">Celebra</p>
+      <p class="especial-texto">La Vida</p>
+    </div>
+  </section>
+
+  <!-- Confirmar -->
+  <section id="confirmar" class="confirmar">
+    <div class="confirmar-container" id="confirmarNormal">
+      <div class="confirmar-icon">💬</div>
+      <h2 class="confirmar-titulo">Confirmar Asistencia</h2>
+      <p class="confirmar-fecha">Confirma antes del 5 de Abril</p>
+      <a href="#" onclick="mostrarDemo(); return false;" class="confirmar-btn">Confirmar por WhatsApp</a>
+    </div>
+    <div class="confirmar-container" id="confirmarToken" style="display: none">
+      <div class="confirmar-icon">🎉</div>
+      <h2 class="confirmar-titulo">Confirmar Asistencia</h2>
+      <p class="confirmar-texto" id="confirmarNombre">Hola, te invito a mi fiesta</p>
+      <div class="confirmar-form" id="confirmarForm">
+        <p class="confirmar-cantidad">¿Cuántas personas vienen?</p>
+        <div class="confirmar-numeros">
+          <button type="button" onclick="cambiarCantidad(-1)">-</button>
+          <span id="cantidadPersonas">1</span>
+          <button type="button" onclick="cambiarCantidad(1)">+</button>
+        </div>
+        <p class="confirmar-info" id="confirmarInfo">Somos 1 persona</p>
+        <div class="confirmar-botones">
+          <button type="button" class="confirmar-btn si" onclick="confirmarAsistencia('si')">
+            <i class="fas fa-check"></i> Asistiré
+          </button>
+          <button type="button" class="confirmar-btn no" onclick="confirmarAsistencia('no')">
+            <i class="fas fa-times"></i> No podré asistir
+          </button>
+        </div>
+      </div>
+      <div class="confirmar-exito" id="confirmarExito" style="display: none">
+        <i class="fas fa-check-circle"></i>
+        <p>¡Gracias por confirmar!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section id="footer" class="footer">
+    <div class="footer-container">
+      <div class="footer-icon">💐</div>
+      <p class="footer-invitacion">Invitación</p>
+      <p class="footer-de">de</p>
+      <p class="footer-nombre">{props.nombre.toUpperCase()}</p>
+      <p class="footer-texto">TE ESPERO</p>
+      <p class="footer-hashtag">#{props.instagramHashtag}</p>
+      <div class="footer-markentas">
+        <a href="/invitaciones#15-anos" class="footer-markentas-link">← Volver a los Diseños</a>
+      </div>
+      <div class="footer-panel">
+        <a href="/invitaciones/juana/admin/index.html" class="footer-panel-link">PANEL</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a 
+    href={`https://api.markentas.com/api/whatsapp?src=${encodeURIComponent(props.whatsappMensaje)}`}
+    target="_blank"
+    class="whatsapp-float"
+    id="whatsappBtn"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Saludos Floating Button -->
+  <button class="saludos-float" id="saludosBtn" onclick="abrirModalSaludos()">
+    <i class="fas fa-comments"></i>
+    <span class="saludos-badge" id="saludosBadge">0</span>
+  </button>
+
+  <!-- Modal Saludos -->
+  <div id="modalSaludos" class="modal" onclick="closeModalSaludos(event)">
+    <div class="modal-content saludos-modal">
+      <button class="modal-cerrar" onclick="closeModalSaludos()"><i class="fas fa-times"></i></button>
+      <h3 class="modal-titulo">Libro de Visitas</h3>
+      <div class="saludos-lista" id="saludosLista">
+        <p class="saludos-vacio">Cargando...</p>
+      </div>
+      <div class="saludos-form">
+        <input type="text" id="saludoNombre" placeholder="Tu nombre" class="saludos-input" />
+        <textarea id="saludoMensaje" placeholder="Escribe tu mensaje..." class="saludos-textarea" rows="2"></textarea>
+        <button class="saludos-btn" onclick="enviarSaludo()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Datos Bancarios -->
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="modal-cerrar" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      <h3 class="modal-titulo">Datos de la Cuenta</h3>
+      <div class="modal-datos">
+        <p class="modal-banco">{props.datosBancarios.banco}</p>
+        <p class="modal-alias">{props.datosBancarios.alias}</p>
+        <p class="modal-titular">Titular: {props.datosBancarios.titular}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navegarLightbox(-1)">&#10094;</button>
+    <button class="lightbox-nav lightbox-next" onclick="navegarLightbox(1)">&#10095;</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="Foto" />
+  </div>
+
+
+  <script>
+    window.addEventListener('scroll', function () {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+      const whatsappBtn = document.getElementById('whatsappBtn');
+
+      if (whatsappBtn) {
+        if (scrollTop + winHeight >= docHeight - 200) {
+          whatsappBtn.classList.add('visible');
+        } else {
+          whatsappBtn.classList.remove('visible');
+        }
+      }
+    });
+  </script>
+</InvitacionLayout>

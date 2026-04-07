@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import HeroInvitaciones from '../../components/HeroInvitaciones.astro';
+import SectionCategorias from '../../components/SectionCategorias.astro';
+import SectionDisenos from '../../components/SectionDisenos.astro';
+import CTAConsulta from '../../components/CTAConsulta.astro';
+import AdSense from '../../components/AdSense.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = 'Diseños de Invitaciones Digitales para Bodas, 15 y 18 Años';
+const description = 'Conocé nuestros diseños exclusivos para 15 años, 18 años y bodas. Invitaciones digitales interactivas con confirmación automática y fácil compartir.';
+---
+
+<Layout title={title} description={description}>
+	<Navbar />
+	<main>
+		<HeroInvitaciones />
+		<SectionCategorias />
+		<AdSense slot="8028132706" />
+		<SectionDisenos />
+		<CTAConsulta />
+		<AdSense slot="6715051036" />
+	</main>
+	<Footer />
+</Layout>

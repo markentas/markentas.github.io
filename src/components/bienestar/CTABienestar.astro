@@ -1,0 +1,176 @@
+---
+import { WHATSAPP_URLS } from '../../consts';
+
+const mensajeBienestar = encodeURIComponent(
+  'Hola, me contacto desde mialacan.com/bienestar, ¿cuál café con Ganoderma me conviene según mi rutina?'
+);
+const whatsappUrl = `https://api.markentas.com/api/whatsapp?src=${mensajeBienestar}`;
+---
+
+<section class="cta">
+  <div class="container">
+    <div class="contenido">
+      <span class="tag">Hablemos</span>
+      <h2>¿No sabés cuál es para vos?</h2>
+      <p>
+        ¿Querés que te recomiende según tu rutina? Estudiás, trabajás, o tenés un proyecto? 
+        Escribime y te ayudo a encontrar tu café.
+      </p>
+      <a href={whatsappUrl} class="boton-whatsapp" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i>
+        Escribime por WhatsApp
+      </a>
+    </div>
+    <div class="decoracion">
+      <div class="circulo"></div>
+      <div class="ondas">
+        <div class="onda"></div>
+        <div class="onda"></div>
+        <div class="onda"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contenido {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 60px 40px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .boton-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 36px;
+    background: var(--whatsapp);
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+  }
+
+  .boton-whatsapp:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+  }
+
+  .boton-whatsapp i {
+    font-size: 1.5rem;
+  }
+
+  .decoracion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .circulo {
+    width: 500px;
+    height: 500px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ondas {
+    position: relative;
+    width: 500px;
+    height: 500px;
+  }
+
+  .onda {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse-onda 4s ease-out infinite;
+  }
+
+  .onda:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    animation-delay: 0s;
+  }
+
+  .onda:nth-child(2) {
+    width: 400px;
+    height: 400px;
+    animation-delay: 1s;
+  }
+
+  .onda:nth-child(3) {
+    width: 500px;
+    height: 500px;
+    animation-delay: 2s;
+  }
+
+  @keyframes pulse-onda {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contenido {
+      padding: 40px 24px;
+    }
+  }
+</style>

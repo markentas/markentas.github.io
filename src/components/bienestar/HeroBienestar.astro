@@ -1,0 +1,186 @@
+---
+interface Props {
+  titulo?: string;
+  subtitulo?: string;
+}
+
+const { titulo, subtitulo } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="content">
+      <h1 class="titulo">{titulo || 'Energía Inteligente para Mentes Creadoras'}</h1>
+      <p class="subtitulo">{subtitulo || 'Y sin el bajón del café tradicional'}</p>
+      <p class="historia">
+        Entre la carrera de robótica, la programación de sitios y organizar eventos, necesitaba algo 
+        que me mantuviera enfocado sin afectar mi salud. Así descubrí el café con Ganoderma...
+      </p>
+      <a href="#ciencia" class="cta-scroll">
+        Conocer más
+        <i class="fa-solid fa-arrow-down"></i>
+      </a>
+    </div>
+    <div class="imagen">
+      <div class="blob"></div>
+      <div class="icono-cafe">
+        <i class="fa-solid fa-mug-hot"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .titulo {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitulo {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .historia {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 500px;
+  }
+
+  .cta-scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: var(--bg);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px var(--accent-glow);
+  }
+
+  .cta-scroll:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--accent-glow);
+  }
+
+  .imagen {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .blob {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .icono-cafe {
+    position: relative;
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    background: var(--bg-alt);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border);
+    animation: float 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+
+  .icono-cafe i {
+    font-size: 80px;
+    color: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .historia {
+      margin: 0 auto 32px;
+    }
+
+    .imagen {
+      order: -1;
+    }
+
+    .blob {
+      width: 250px;
+      height: 250px;
+    }
+
+    .icono-cafe {
+      width: 150px;
+      height: 150px;
+    }
+
+    .icono-cafe i {
+      font-size: 60px;
+    }
+  }
+</style>

@@ -1,0 +1,342 @@
+---
+import InvitacionLayout from '../../layouts/InvitacionLayout.astro';
+
+const props = {
+  nombre: 'Elena y Diego',
+  tipo: 'boda' as const,
+  titulo: 'Boda Bosque',
+  fecha: '20 DE SEPTIEMBRE DE 2026',
+  fechaData: '2026-09-20',
+  hora: '16:00',
+  lugarCeremonia: 'Capilla San José',
+  direccionCeremonia: 'Ruta 5 Km 23, Turdera',
+  lugarRecepcion: 'Finca Los Pinos',
+  direccionRecepcion: 'Ruta 5 Km 23, Turdera',
+  padres1: ['Familia Rodríguez'],
+  padres2: ['Familia Martínez'],
+  frase: '"Donde hay amor, hay vida."',
+  dresscode: 'Campestre Elegante',
+  instagramHashtag: 'ElenaYDiegoBosque',
+  invitacionId: 'boda-bosque',
+  whatsappMensaje: 'Hola, me contacto desde la tarjeta Boda Bosque, me gustó mucho, quisiera más información',
+  itinerarios: [
+    { hora: '16:00', actividad: 'Ceremonia', detalle: 'Capilla San José' },
+    { hora: '17:00', actividad: 'Cóctel', detalle: 'Jardines de la Finca' },
+    { hora: '18:30', actividad: 'Cena', detalle: 'Salón Principal' },
+    { hora: '20:00', actividad: 'Baile', detalle: 'Pista al aire libre' },
+    { hora: '22:00', actividad: 'Torta', detalle: 'Bajo las estrellas' },
+  ],
+  datosBancarios: {
+    banco: 'Banco Itaú',
+    alias: 'ELENA.DIEGO.BOSQUE',
+    titular: 'Elena Rodríguez',
+  },
+};
+---
+
+<InvitacionLayout 
+  title={`${props.nombre} - ${props.titulo}`}
+  description={`Invitación digital para la boda de ${props.nombre}`}
+  nombre={props.nombre}
+  tipo={props.tipo}
+  invitacionId={props.invitacionId}
+>
+  <div id="notificaciones"></div>
+
+  <audio id="audio" src="/invitaciones/boda-bosque/audio/audio.mp3" loop></audio>
+
+  <button id="btn-musica" class="btn-musica" onclick="toggleMusica()">
+    <i class="fas fa-leaf"></i>
+  </button>
+
+  <section id="hero" class="hero">
+    <div class="hero-leaves">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+    <div class="hero-content">
+      <p class="hero-join">Save the Date</p>
+      <div class="hero-names">
+        Elena
+        <span class="and-symbol">♥</span>
+        Diego
+      </div>
+      <p class="hero-date">{props.fecha}</p>
+      <p class="hero-venue">{props.lugarRecepcion}</p>
+      <a href="#intro" class="hero-btn" onclick="iniciarMusica(); document.getElementById('intro').scrollIntoView({behavior: 'smooth'}); return false;">Ver Invitación</a>
+    </div>
+  </section>
+
+  <section id="intro" class="intro">
+    <div class="intro-container">
+      <p class="intro-text">Con la bendición de nuestras familias</p>
+      <p class="intro-names">Elena <span>&</span> Diego</p>
+      <p class="intro-date">20 de Septiembre 2026</p>
+    </div>
+  </section>
+
+  <section id="countdown" class="countdown" data-fecha={props.fechaData} data-hora={props.hora}>
+    <h2 class="countdown-title">Falta poco</h2>
+    <div class="countdown-timer">
+      <div class="count-block">
+        <div class="count-box"><span class="count-number" id="days">00</span></div>
+        <span class="count-label">Días</span>
+      </div>
+      <div class="count-block">
+        <div class="count-box"><span class="count-number" id="hours">00</span></div>
+        <span class="count-label">Horas</span>
+      </div>
+      <div class="count-block">
+        <div class="count-box"><span class="count-number" id="minutes">00</span></div>
+        <span class="count-label">Min</span>
+      </div>
+      <div class="count-block">
+        <div class="count-box"><span class="count-number" id="seconds">00</span></div>
+        <span class="count-label">Seg</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="fotos" class="fotos">
+    <div class="fotos-header">
+      <div class="fotos-icon"><i class="fas fa-camera-retro"></i></div>
+      <h2 class="fotos-title">Nuestra Historia</h2>
+    </div>
+    <div class="fotos-grid">
+      <div class="foto-item foto-1">
+        <img src="/invitaciones/boda-bosque/img/boda1.jpg" alt="Elena & Diego">
+        <div class="foto-overlay"><span>2020</span></div>
+      </div>
+      <div class="foto-item foto-2">
+        <img src="/invitaciones/boda-bosque/img/boda2.jpg" alt="Elena & Diego">
+        <div class="foto-overlay"><span>2023</span></div>
+      </div>
+      <div class="foto-item foto-3">
+        <img src="/invitaciones/boda-bosque/img/boda3.jpg" alt="Elena & Diego">
+        <div class="foto-overlay"><span>Hoy</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ceremonia" class="ceremonia">
+    <div class="ceremonia-card">
+      <div class="ceremonia-icon"><i class="fas fa-church"></i></div>
+      <h3 class="ceremonia-titulo">Ceremonia</h3>
+      <p class="ceremonia-lugar">{props.lugarCeremonia}</p>
+      <p class="ceremonia-direccion">{props.direccionCeremonia}</p>
+      <p class="ceremonia-hora">{props.hora} hs</p>
+      <a href="#" onclick="mostrarDemo(); return false;" class="ceremonia-btn">Cómo Llegar</a>
+    </div>
+  </section>
+
+  <section id="recepcion" class="recepcion">
+    <div class="recepcion-card">
+      <div class="recepcion-icon"><i class="fas fa-tree"></i></div>
+      <h3 class="recepcion-titulo">Recepción</h3>
+      <p class="recepcion-lugar">{props.lugarRecepcion}</p>
+      <p class="recepcion-direccion">{props.direccionRecepcion}</p>
+      <p class="recepcion-hora">17:00 hs - Cocktail</p>
+      <p class="recepcion-hora">18:30 hs - Cena</p>
+      <a href="#" onclick="mostrarDemo(); return false;" class="recepcion-btn">Ver Ubicación</a>
+    </div>
+  </section>
+
+  <section id="frase" class="frase">
+    <div class="frase-content">
+      <p class="frase-text">{props.frase}</p>
+      <p class="frase-autor">— Elena & Diego</p>
+    </div>
+  </section>
+
+  <section id="dresscode" class="dresscode">
+    <div class="dresscode-container">
+      <div class="dresscode-icon"><i class="fas fa-shirt"></i></div>
+      <h3 class="dresscode-titulo">Dress Code</h3>
+      <p class="dresscode-text">{props.dresscode}</p>
+      <p class="dresscode-note">Colores tierra y naturales</p>
+    </div>
+  </section>
+
+  <section id="itinerario" class="itinerario">
+    <div class="itinerario-card">
+      <h2 class="itinerario-title">Programa del Día</h2>
+      {props.itinerarios.map(item => (
+        <div class="itinerario-item">
+          <div class="itinerario-content">
+            <div class="itinerario-row">
+              <span class="itinerario-time">{item.hora}</span>
+              <div class="itinerario-details">
+                <p class="itinerario-actividad">{item.actividad}</p>
+                <p class="itinerario-detalle">{item.detalle}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="galeria" class="galeria">
+    <div class="galeria-container">
+      <div class="galeria-icon"><i class="fas fa-images"></i></div>
+      <h2 class="galeria-title">Galería de Invitados</h2>
+      <p class="galeria-texto">Comparte tus fotos de la boda conmigo</p>
+      <div class="galeria-grid" id="galeriaGrid"></div>
+      <div class="galeria-upload">
+        <input type="file" id="galeriaInput" accept="image/*" multiple hidden />
+        <button class="galeria-btn" onclick="document.getElementById('galeriaInput').click()">
+          <i class="fas fa-cloud-upload-alt"></i> Subir mis fotos
+        </button>
+        <div class="galeria-preview" id="galeriaPreview" style="display: none">
+          <div class="galeria-preview-grid" id="galeriaPreviewGrid"></div>
+          <div class="galeria-preview-buttons">
+            <button class="galeria-submit" id="btnEnviar" onclick="subirFotos()">Enviar todas</button>
+            <button class="galeria-cancel" onclick="cancelarFotos()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="regalos" class="regalos">
+    <div class="regalos-container">
+      <div class="regalos-icon"><i class="fas fa-gift"></i></div>
+      <h2 class="regalos-title">Mesa de Regalos</h2>
+      <p class="regalos-texto">Tu presencia es el mejor regalo. Si deseas colaborar con nuestra nueva vida:</p>
+      <button class="regalos-btn" onclick="openModal()">
+        <i class="fas fa-university"></i> Ver Datos Bancarios
+      </button>
+    </div>
+  </section>
+
+  <section id="hashtag" class="hashtag">
+    <p class="hashtag-tag">#{props.instagramHashtag}</p>
+  </section>
+
+  <section id="rsvp" class="rsvp">
+    <div id="rsvpNormal">
+      <h2 class="rsvp-title">Confirmar Asistencia</h2>
+      <p class="rsvp-text">Confirma antes del 20 de Agosto de 2026</p>
+      <a href="#" onclick="mostrarDemo(); return false;" class="rsvp-btn">
+        <i class="fab fa-whatsapp"></i> Confirmar por WhatsApp
+      </a>
+    </div>
+    <div id="rsvpToken" style="display: none">
+      <h2 class="rsvp-title">Confirmar Asistencia</h2>
+      <p class="rsvp-texto" id="rsvpNombre">¡Hola! Te esperamos en nuestra boda</p>
+      <div class="rsvp-form" id="rsvpForm">
+        <p class="rsvp-cantidad">¿Cuántas personas vienen?</p>
+        <div class="rsvp-numeros">
+          <button type="button" onclick="cambiarCantidad(-1)">-</button>
+          <span id="cantidadPersonas">1</span>
+          <button type="button" onclick="cambiarCantidad(1)">+</button>
+        </div>
+        <p class="rsvp-info" id="rsvpInfo">Somos 1 persona</p>
+        <div class="rsvp-botones">
+          <button type="button" class="rsvp-btn si" onclick="confirmarAsistencia('si')">
+            <i class="fas fa-check"></i> Asistiré
+          </button>
+          <button type="button" class="rsvp-btn no" onclick="confirmarAsistencia('no')">
+            <i class="fas fa-times"></i> No podré asistir
+          </button>
+        </div>
+      </div>
+      <div class="rsvp-exito" id="rsvpExito" style="display: none">
+        <i class="fas fa-check-circle"></i>
+        <p>¡Gracias por confirmar!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="footer" class="footer">
+    <div class="footer-content">
+      <div class="footer-icon"><i class="fas fa-heart"></i></div>
+      <p class="footer-names">Elena <span>&</span> Diego</p>
+      <p class="footer-date">20 . 09 . 2026</p>
+      <p class="footer-message">Te esperamos en nuestro día especial</p>
+      <div class="footer-markentas">
+        <a href="/invitaciones#bodas" class="footer-markentas-link">← Volver a los Diseños</a>
+      </div>
+      <div class="footer-panel">
+        <a href="/invitaciones/boda-bosque/admin/index.html" class="footer-panel-link">PANEL</a>
+      </div>
+    </div>
+  </section>
+
+  <a 
+    href={`https://api.markentas.com/api/whatsapp?src=${encodeURIComponent(props.whatsappMensaje)}`}
+    target="_blank"
+    class="whatsapp-float"
+    id="whatsappBtn"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <button class="saludos-float" id="saludosBtn" onclick="abrirModalSaludos()">
+    <i class="fas fa-comments"></i>
+    <span class="saludos-badge" id="saludosBadge">0</span>
+  </button>
+
+  <div id="modalSaludos" class="modal" onclick="closeModalSaludos(event)">
+    <div class="modal-content saludos-modal">
+      <button class="modal-cerrar" onclick="closeModalSaludos()">&times;</button>
+      <h3 class="modal-titulo">Libro de Visitas</h3>
+      <div class="saludos-lista" id="saludosLista">
+        <p class="saludos-vacio">Cargando...</p>
+      </div>
+      <div class="saludos-form">
+        <input type="text" id="saludoNombre" placeholder="Tu nombre" class="saludos-input" />
+        <textarea id="saludoMensaje" placeholder="Escribe tu mensaje..." class="saludos-textarea" rows="2"></textarea>
+        <button class="saludos-btn" onclick="enviarSaludo()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navegarLightbox(-1)">&#10094;</button>
+    <button class="lightbox-nav lightbox-next" onclick="navegarLightbox(1)">&#10095;</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="Foto" />
+  </div>
+
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content">
+      <h3 class="modal-title">Datos de Transferencia</h3>
+      <div class="modal-datos">
+        <p class="modal-banco">{props.datosBancarios.banco}</p>
+        <p class="modal-alias">{props.datosBancarios.alias}</p>
+        <p class="modal-titular">{props.datosBancarios.titular}</p>
+      </div>
+      <button class="modal-btn" onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+
+
+  <script>
+    window.addEventListener('scroll', function () {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+      const whatsappBtn = document.getElementById('whatsappBtn');
+
+      if (whatsappBtn) {
+        if (scrollTop + winHeight >= docHeight - 200) {
+          whatsappBtn.classList.add('visible');
+        } else {
+          whatsappBtn.classList.remove('visible');
+        }
+      }
+    });
+
+    const galeriaInput = document.getElementById('galeriaInput') as HTMLInputElement | null;
+    if (galeriaInput) {
+      galeriaInput.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        if (target.files) seleccionarFotos(target.files);
+      });
+    }
+
+    if (document.getElementById('galeriaGrid')) cargarGaleria();
+    if (document.getElementById('saludosBtn')) verificarToken();
+  </script>
+</InvitacionLayout>

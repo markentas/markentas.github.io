@@ -1,0 +1,82 @@
+---
+import { BIENESTAR } from '../consts';
+---
+
+<section class="bienestar">
+	<div class="container">
+		<div class="bienestar-content">
+			<div class="bienestar-icon">
+				<i class="fas fa-mug-hot"></i>
+			</div>
+			<div class="bienestar-text">
+				<h2>{BIENESTAR.title}</h2>
+				<p>{BIENESTAR.description}</p>
+				<a href={BIENESTAR.ctaLink} class="link">
+					{BIENESTAR.ctaText}
+					<i class="fas fa-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.bienestar {
+		padding: 60px 0;
+		background: var(--bg-alt);
+		border-top: 1px solid var(--border);
+	}
+
+	.bienestar-content {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+		flex-wrap: wrap;
+	}
+
+	.bienestar-icon {
+		width: 80px;
+		height: 80px;
+		flex-shrink: 0;
+		background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(14, 165, 233, 0.1) 100%);
+		border-radius: var(--radius-xl);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.bienestar-icon i {
+		font-size: 2rem;
+		color: var(--accent);
+	}
+
+	.bienestar-text {
+		flex: 1;
+		min-width: 200px;
+	}
+
+	.bienestar-text h2 {
+		font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+		font-weight: 600;
+		margin-bottom: 8px;
+	}
+
+	.bienestar-text p {
+		color: var(--text-muted);
+		font-size: 0.95rem;
+		margin-bottom: 16px;
+	}
+
+	.link {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		color: var(--accent);
+		font-weight: 500;
+		transition: gap 0.2s ease;
+	}
+
+	.link:hover {
+		gap: 12px;
+	}
+</style>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="adminTitle">Admin - {{NOMBRE}} | Markentas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #0ea5e9;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --success: #10b981;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .login-subtitle {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .login-input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .login-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--dark);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .login-hint {
+            background: #fef9c3;
+            color: #854d0e;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .login-hint i {
+            margin-right: 6px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-error {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .login-back {
+            margin-top: 20px;
+        }
+
+        .login-back a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .login-back a:hover {
+            color: var(--primary);
+        }
+
+        .login-footer {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-logo">
+                <i class="fas fa-gem"></i>
+            </div>
+            <h1 class="login-title">María</h1>
+            <p class="login-subtitle">Ingresa tu API Key para acceder al panel</p>
+            
+            <div class="login-error" id="loginError"></div>
+            
+            <form id="loginForm">
+                <div class="login-input-group">
+                    <label class="login-label" for="apiKey">API Key</label>
+                    <input type="password" id="apiKey" class="login-input" placeholder="Ingresa tu API Key" required>
+                </div>
+                <div class="login-hint">
+                    <i class="fas fa-info-circle"></i> Para ingresar usa la clave "demo"
+                </div>
+                <button type="submit" class="login-btn" id="loginBtn">Ingresar</button>
+            </form>
+            
+            <div class="login-back">
+                <a id="volverLink" href="#"><i class="fas fa-arrow-left"></i> Volver a la invitación</a>
+            </div>
+
+            <div class="login-footer">
+                Creado por <a href="https://markentas.com" target="_blank">Markentas</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pathParts = window.location.pathname.split('/').filter(p => p && p !== 'index.html');
+        const adminIndex = pathParts.indexOf('admin');
+        const INVITACION_ID = adminIndex > 0 ? pathParts[adminIndex - 1] : (pathParts.length > 1 ? pathParts[1] : pathParts[0]);
+        document.getElementById('volverLink').href = '/invitaciones/' + INVITACION_ID;
+        const isLocal = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1') || window.location.hostname.match(/^192\.168\.|^10\.|^172\./);
+        const API_URL = isLocal 
+            ? `http://${window.location.hostname}:8787` 
+            : 'https://api.markentas.com';
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const apiKey = document.getElementById('apiKey').value;
+            const btn = document.getElementById('loginBtn');
+            const errorEl = document.getElementById('loginError');
+            
+            btn.disabled = true;
+            btn.textContent = 'Verificando...';
+            errorEl.style.display = 'none';
+            
+            try {
+                const response = await fetch(`${API_URL}/api/admin/imagenes/${INVITACION_ID}`, {
+                    method: 'GET',
+                    headers: { 'X-API-Key': apiKey }
+                });
+                
+                if (response.ok) {
+                    localStorage.setItem('markentas_admin_key_' + INVITACION_ID, apiKey);
+                    const basePath = window.location.pathname.replace('/index.html', '');
+                    window.location.href = basePath + '/dashboard.html';
+                } else {
+                    errorEl.textContent = 'API Key inválida';
+                    errorEl.style.display = 'block';
+                }
+            } catch (error) {
+                errorEl.textContent = 'Error de conexión. Verifica el servidor.';
+                errorEl.style.display = 'block';
+            }
+            
+            btn.disabled = false;
+            btn.textContent = 'Ingresar';
+        });
+
+        // Mostrar nombre de la invitación
+        (function() {
+            const nombreTitulo = INVITACION_ID.charAt(0).toUpperCase() + INVITACION_ID.slice(1);
+            const h1El = document.querySelector('.login-title');
+            if (h1El) h1El.textContent = nombreTitulo;
+            const titleEl = document.getElementById('adminTitle');
+            if (titleEl) titleEl.textContent = 'Admin - ' + nombreTitulo + ' | Markentas';
+        })();
+    </script>
+</body>
+</html>

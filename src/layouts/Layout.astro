@@ -1,0 +1,132 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = SITE_TITLE,
+	description = SITE_DESCRIPTION,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalURL} />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		<title>{title} | {SITE_TITLE}</title>
+		<meta name="title" content={`${title} | ${SITE_TITLE}`} />
+		<meta name="description" content={description} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={`${title} | ${SITE_TITLE}`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content={SITE_TITLE} />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={`${title} | ${SITE_TITLE}`} />
+		<meta property="twitter:description" content={description} />
+
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- Google AdSense -->
+		<script
+			async
+			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6341354300694706"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--bg: #0b1120;
+		--bg-alt: #0f172a;
+		--bg-card: rgba(255, 255, 255, 0.03);
+		--bg-glass: rgba(255, 255, 255, 0.05);
+
+		--accent: #38bdf8;
+		--accent-dark: #0ea5e9;
+		--accent-glow: rgba(56, 189, 248, 0.3);
+
+		--text: #f1f5f9;
+		--text-muted: #94a3b8;
+
+		--border: rgba(255, 255, 255, 0.08);
+		--whatsapp: #25d366;
+
+		--font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+		--radius-sm: 8px;
+		--radius-md: 12px;
+		--radius-lg: 16px;
+		--radius-xl: 24px;
+		--radius-full: 9999px;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: var(--font);
+		background: var(--bg);
+		color: var(--text);
+		line-height: 1.6;
+		min-height: 100vh;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+</style>

@@ -1,0 +1,260 @@
+---
+---
+
+<section id="ciencia" class="ciencia">
+  <div class="container">
+    <div class="header">
+      <span class="tag">La Ciencia</span>
+      <h2>El hongo que los emperadores chinos llamaban "immortal"</h2>
+      <p class="descripcion">
+        Durante más de 2,000 años, el Ganoderma lucidum fue reservado para la nobleza china. 
+        Hoy, la ciencia moderna respalda lo que la tradición ya sabía.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card principal">
+        <div class="icono">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <h3>¿Qué es el Ganoderma?</h3>
+        <p>
+          Conocido como <strong>Reishi</strong> (Japón) o <strong>Lingzhi</strong> (China), 
+          el Ganoderma lucidum es un hongo medicinal utilizado en la medicina tradicional asiática 
+          por sus propiedades terapéuticas. Contiene más de 432 metabolitos secundarios, incluyendo 
+          polisacáridos y triterpenoides con efectos documentados sobre el sistema inmune.
+        </p>
+        <a 
+          href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10094145/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="fuente"
+        >
+          <i class="fa-solid fa-external-link-alt"></i>
+          Estudio científico (PMC)
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="icono">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <h3>Adaptógeno Natural</h3>
+        <p>
+          Los adaptógenos ayudan al cuerpo a resistir diferentes tipos de estrés. 
+          El Ganoderma ha mostrado capacidad para <strong>regular los niveles de cortisol</strong> 
+          y promover la relajación sin efectos sedantes.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icono">
+          <i class="fa-solid fa-shield-heart"></i>
+        </div>
+        <h3>Sistema Inmune</h3>
+        <p>
+          Los polisacáridos del Ganoderma pueden <strong>mejorar la función de células inmunes</strong>, 
+          incluyendo macrófagos, células T y células NK. Un estudio de 2023 publicado en Foods 
+          confirma estos efectos inmunomoduladores.
+        </p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="numero">2000+</span>
+        <span class="label">Años de uso tradicional</span>
+      </div>
+      <div class="stat">
+        <span class="numero">432</span>
+        <span class="label">Metabolitos bioactivos</span>
+      </div>
+      <div class="stat">
+        <span class="numero">38B</span>
+        <span class="label">USD mercado de hongos funcionales (2025)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ciencia {
+    padding: 100px 0;
+    background: var(--bg-alt);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .descripcion {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .card.principal {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .card.principal .icono {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card.principal .icono i {
+    font-size: 36px;
+  }
+
+  .card.principal h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .card.principal p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .icono {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .icono i {
+    font-size: 24px;
+    color: var(--accent);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .fuente {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--accent);
+    font-size: 0.875rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .fuente:hover {
+    opacity: 0.8;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .stat {
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .numero {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card.principal {
+      grid-template-columns: 1fr;
+    }
+
+    .card.principal .icono {
+      width: 56px;
+      height: 56px;
+    }
+
+    .card.principal .icono i {
+      font-size: 24px;
+    }
+
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

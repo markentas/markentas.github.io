@@ -1,0 +1,272 @@
+---
+---
+
+<section class="diferenciadores">
+  <div class="container">
+    <div class="header">
+      <span class="tag">Comparación</span>
+      <h2>Por qué cambiar tu café tradicional</h2>
+    </div>
+
+    <div class="comparacion">
+      <div class="columna tradicional">
+        <h3>
+          <i class="fa-solid fa-mug-saucer"></i>
+          Café Tradicional
+        </h3>
+        <ul>
+          <li>
+            <span class="icono"><i class="fa-solid fa-xmark"></i></span>
+            <span>95-200mg de cafeína por taza</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-xmark"></i></span>
+            <span>Jitters y ansiedad</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-xmark"></i></span>
+            <span>Bajón energético a las 2-3 horas</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-xmark"></i></span>
+            <span>Puede alterar el sueño</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-xmark"></i></span>
+            <span>Acidéz estomacal</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="columna organo">
+        <h3>
+          <i class="fa-solid fa-leaf"></i>
+          Café con Ganoderma
+        </h3>
+        <ul>
+          <li>
+            <span class="icono"><i class="fa-solid fa-check"></i></span>
+            <span>~75-115mg de cafeína</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-check"></i></span>
+            <span>Energía suave y sostenida</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-check"></i></span>
+            <span>Adaptógenos regulan el cortisol</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-check"></i></span>
+            <span>Mejor calidad de sueño</span>
+          </li>
+          <li>
+            <span class="icono"><i class="fa-solid fa-check"></i></span>
+            <span>Más suave para el estómago</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icono">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <h3>Menos Cafeína</h3>
+        <p>
+          Con 75mg vs 95-200mg del café normal, obtenés energía sin los jitters. 
+          Un estudio sugiere que 2-3 tazas de café al día pueden tener beneficios cardiovasculares.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icono">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+        <h3>Enfoque Cognitivo</h3>
+        <p>
+          El <strong>Lion's Mane</strong> (presente en el Royal Black) estimula el NGF 
+          (Factor de Crecimiento Nervioso), mejorando memoria y concentración según estudios de 2023.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icono">
+          <i class="fa-solid fa-shield-virus"></i>
+        </div>
+        <h3>Inmunidad</h3>
+        <p>
+          Los polisacáridos del Ganoderma modulan el sistema inmune. 
+          Pueden aumentar la actividad de macrófagos, células T y células NK.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .diferenciadores {
+    padding: 100px 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+  }
+
+  .comparacion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  .columna {
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    border: 2px solid;
+  }
+
+  .tradicional {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+
+  .organo {
+    background: rgba(56, 189, 248, 0.05);
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+  }
+
+  .tradicional h3 {
+    color: #ef4444;
+  }
+
+  .organo h3 {
+    color: var(--accent);
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+  }
+
+  .icono {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  .tradicional .icono {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+  }
+
+  .organo .icono {
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .card .icono {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .card .icono i {
+    font-size: 28px;
+    color: var(--accent);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    justify-content: center;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .comparacion {
+      grid-template-columns: 1fr;
+    }
+
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

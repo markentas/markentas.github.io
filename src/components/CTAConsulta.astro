@@ -1,0 +1,100 @@
+---
+import { WHATSAPP_URLS } from '../consts';
+---
+
+<section class="cta-consulta">
+	<div class="container">
+		<div class="cta-content">
+			<div class="icon">
+				<i class="fab fa-whatsapp"></i>
+			</div>
+			<h2>¿Tenés dudas sobre cuál elegir?</h2>
+			<p>Escribime y te ayudo a encontrar el diseño perfecto para tu evento.</p>
+			<a
+				href={WHATSAPP_URLS.cta}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="btn btn-whatsapp"
+			>
+				<i class="fab fa-whatsapp"></i>
+				Escríbeme por WhatsApp
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.cta-consulta {
+		padding: 60px 0;
+		background: var(--bg-alt);
+	}
+
+	.cta-content {
+		text-align: center;
+		max-width: 400px;
+		margin: 0 auto;
+	}
+
+	.icon {
+		width: 64px;
+		height: 64px;
+		margin: 0 auto 20px;
+		background: rgba(37, 211, 102, 0.15);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.icon i {
+		font-size: 2rem;
+		color: var(--whatsapp);
+	}
+
+	h2 {
+		font-size: clamp(1.25rem, 3vw, 1.5rem);
+		font-weight: 600;
+		margin-bottom: 12px;
+	}
+
+	p {
+		color: var(--text-muted);
+		margin-bottom: 24px;
+		line-height: 1.6;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		padding: 16px 28px;
+		border-radius: var(--radius-full);
+		font-weight: 600;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	@media (min-width: 640px) {
+		.btn {
+			width: auto;
+		}
+	}
+
+	.btn-whatsapp {
+		background: var(--whatsapp);
+		color: #fff;
+		box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+	}
+
+	.btn-whatsapp:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+	}
+
+	.btn-whatsapp i {
+		font-size: 1.25rem;
+	}
+</style>

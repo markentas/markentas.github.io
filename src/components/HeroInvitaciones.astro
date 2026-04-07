@@ -1,0 +1,123 @@
+---
+import { INVITACIONES_HERO, WHATSAPP_URLS } from '../consts';
+---
+
+<section class="hero">
+	<div class="container">
+		<div class="hero-content">
+			<h1>{INVITACIONES_HERO.title}</h1>
+			<p class="subtitle">{INVITACIONES_HERO.subtitle}</p>
+			<a
+				href={WHATSAPP_URLS.invitaciones}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="btn btn-primary"
+			>
+				<i class="fab fa-whatsapp"></i>
+				{INVITACIONES_HERO.ctaText}
+			</a>
+		</div>
+	</div>
+	<div class="hero-bg"></div>
+</section>
+
+<style>
+	.hero {
+		min-height: 50vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 120px 20px 60px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hero-bg {
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(ellipse at 30% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+			radial-gradient(ellipse at 70% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+		pointer-events: none;
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		max-width: 600px;
+	}
+
+	h1 {
+		font-size: clamp(1.75rem, 5vw, 2.75rem);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		margin-bottom: 16px;
+		background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		animation: fadeInUp 0.8s ease-out both;
+	}
+
+	.subtitle {
+		font-size: clamp(1rem, 2.5vw, 1.15rem);
+		color: var(--text-muted);
+		line-height: 1.7;
+		margin-bottom: 32px;
+		animation: fadeInUp 0.8s ease-out 0.15s both;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		padding: 16px 28px;
+		border-radius: var(--radius-full);
+		font-weight: 600;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	@media (min-width: 640px) {
+		.btn {
+			width: auto;
+		}
+	}
+
+	.btn-primary {
+		background: var(--whatsapp);
+		color: #fff;
+		box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+	}
+
+	.btn-primary i {
+		font-size: 1.25rem;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		h1,
+		.subtitle {
+			animation: none;
+		}
+	}
+</style>

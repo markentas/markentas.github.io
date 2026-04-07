@@ -1,0 +1,58 @@
+---
+import { DISENOS } from '../consts';
+import DisenoCard from './DisenoCard.astro';
+---
+
+<section class="disenos" id="disenos">
+	<div class="container">
+		<header class="section-header">
+			<h2>Todos los Diseños</h2>
+		</header>
+
+		<div class="disenos-grid">
+			{DISENOS.map((diseno) => (
+				<DisenoCard
+					nombre={diseno.nombre}
+					estilo={diseno.estilo}
+					imagen={diseno.imagen}
+					href={`/invitaciones/${diseno.id}`}
+				/>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.disenos {
+		padding: 60px 0;
+	}
+
+	.section-header {
+		margin-bottom: 32px;
+	}
+
+	.section-header h2 {
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 700;
+		text-align: center;
+	}
+
+	.disenos-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+
+	@media (min-width: 640px) {
+		.disenos-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.disenos-grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+</style>

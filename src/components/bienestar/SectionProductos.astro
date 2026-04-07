@@ -1,0 +1,437 @@
+---
+interface Producto {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  paraQuien: string;
+  ingredientes: string[];
+  cafeina: string;
+  imagen: string;
+  alt: string;
+}
+
+const productos: Producto[] = [
+  {
+    id: 'black',
+    nombre: 'Black',
+    descripcion: 'Mi café de todos los días. Triple hongo para foco sin ansiedad.',
+    paraQuien: 'Programadores, estudiantes',
+    ingredientes: ['Ganoderma', 'Cordyceps', "Lion's Mane"],
+    cafeina: '75mg',
+    imagen: '/img/productos/cafe-organo-black.webp',
+    alt: 'Café Organo Gold Black con Ganoderma, Cordyceps y Lion\'s Mane - 75mg cafeína',
+  },
+  {
+    id: 'latte',
+    nombre: 'Latte',
+    descripcion: 'Los días que quiero algo cremoso sin sacrificar beneficios.',
+    paraQuien: 'Amantes del café con leche',
+    ingredientes: ['Ganoderma', 'Crema no láctea'],
+    cafeina: '105-115mg',
+    imagen: '/img/productos/cafe-organo-latte.webp',
+    alt: 'Café Latte Organo Gold con Ganoderma - Bebida funcional cremosa',
+  },
+  {
+    id: 'supreme',
+    nombre: 'Supreme',
+    descripcion: 'Cuando tengo deadline importante. Ginseng + Tongkat Ali para energía.',
+    paraQuien: 'Profesionales, atletas',
+    ingredientes: ['Ganoderma', 'Ginseng', 'Tongkat Ali'],
+    cafeina: '~100mg',
+    imagen: '/img/productos/cafe-organo-supreme.webp',
+    alt: 'Café Supreme Organo Gold con Ginseng y Tongkat Ali - Energía máxima',
+  },
+];
+---
+
+<section class="productos" id="productos">
+  <div class="container">
+    <div class="header">
+      <span class="tag">Mi Stack</span>
+      <h2>Los que uso en mi día a día</h2>
+      <p class="descripcion">
+        No soy un fanático del wellness, pero cuando encontrás algo que funciona, lo mantenés. 
+        Estos son los 3 cafés que rotan en mi escritorio.
+      </p>
+    </div>
+
+    <div class="grid">
+      {productos.map((producto, index) => (
+        <article class="card" itemscope itemtype="https://schema.org/Product">
+          <div class="imagen-container">
+            <img 
+              src={producto.imagen}
+              alt={producto.alt}
+              width="550"
+              height="550"
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+              class="producto-imagen"
+              itemprop="image"
+            />
+            <div class="badge-cafeina" aria-label={`Contenido de cafeína: ${producto.cafeina}`}>
+              <i class="fa-solid fa-bolt"></i>
+              <span>{producto.cafeina}</span>
+              <span class="cafeina-label">cafeína</span>
+            </div>
+          </div>
+          
+          <div class="contenido">
+            <div class="card-body">
+              <header class="card-header">
+                <h3 itemprop="name">{producto.nombre}</h3>
+                <p class="descripcion" itemprop="description">{producto.descripcion}</p>
+              </header>
+
+              <div class="seccion">
+                <div class="seccion-header">
+                  <i class="fa-solid fa-user" aria-hidden="true"></i>
+                  <span>Para quién es</span>
+                </div>
+                <p class="seccion-value" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+                  <span itemprop="value">{producto.paraQuien}</span>
+                </p>
+              </div>
+
+              <div class="seccion">
+                <div class="seccion-header">
+                  <i class="fa-solid fa-flask" aria-hidden="true"></i>
+                  <span>Ingredientes</span>
+                </div>
+                <div class="ingredientes" itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+                  {producto.ingredientes.map((ing) => (
+                    <span class="ingrediente-tag" itemprop="value">{ing}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <a 
+              href="https://organogold.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="boton-producto"
+              aria-label={`Ver producto ${producto.nombre} en OrganoGold`}
+            >
+              <span>Ver producto</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="cta">
+      <p class="nota">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+        Productos disponibles a través de OrganoGold. 
+        <a href="https://api.markentas.com/api/whatsapp?src=Hola%2C%20me%20contacto%20desde%20mialacan.com%2Fbienestar%2C%20¿cuál%20café%20con%20Ganoderma%20me%20conviene%20según%20mi%20rutina%3F" target="_blank" rel="noopener">Consultame por WhatsApp</a> para más info.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .productos {
+    padding: 100px 0;
+    background: var(--bg-alt);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .header .descripcion {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--accent-glow);
+  }
+
+  .imagen-container {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+    overflow: hidden;
+  }
+
+  .producto-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:hover .producto-imagen {
+    transform: scale(1.05);
+  }
+
+  .badge-cafeina {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 10px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+    transform: rotate(-2deg);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover .badge-cafeina {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+  }
+
+  .badge-cafeina i {
+    font-size: 0.85rem;
+  }
+
+  .cafeina-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .contenido {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card-header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .contenido .descripcion {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .seccion-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .seccion-header i {
+    font-size: 0.7rem;
+  }
+
+  .seccion-value {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .ingredientes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ingrediente-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+  }
+
+  .card:hover .ingrediente-tag {
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .ingrediente-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .boton-producto {
+    margin-top: 20px;
+    padding: 14px 24px;
+    background: transparent;
+    color: var(--accent);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--accent);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .boton-producto:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .boton-producto i {
+    transition: transform 0.3s ease;
+  }
+
+  .boton-producto:hover i {
+    transform: translateX(4px);
+  }
+
+  .cta {
+    text-align: center;
+  }
+
+  .nota {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    padding: 16px 24px;
+    background: var(--bg-glass);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+  }
+
+  .nota i {
+    color: var(--accent);
+  }
+
+  .nota a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .nota a:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .producto-imagen {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .productos {
+      padding: 60px 0;
+    }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .contenido {
+      padding: 20px;
+    }
+
+    .nota {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .badge-cafeina {
+      padding: 8px 12px;
+      font-size: 0.8rem;
+    }
+  }
+</style>

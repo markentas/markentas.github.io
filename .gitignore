@@ -1,0 +1,59 @@
+# ===========================================
+# Astro Build
+# ===========================================
+dist/
+.astro/
+node_modules/
+
+# ===========================================
+# Logs
+# ===========================================
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# ===========================================
+# Environment Variables
+# ===========================================
+.env
+.env.*
+!.env.example
+
+# ===========================================
+# Cloudflare Worker ( sensitive - contains API keys )
+# ===========================================
+# Wrangler config in root = ERROR (duplicated), ignore it
+wrangler.toml
+
+# Full worker directory - contains .dev.vars with secrets
+markentas-worker/
+markentas-worker/.dev.vars
+markentas-worker/.wrangler/
+
+# ===========================================
+# OpenCode Agent Configs
+# ===========================================
+.opencode/
+.agents/
+AGENTS.md
+README.md
+
+# ===========================================
+# IDE
+# ===========================================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# ===========================================
+# OS Files
+# ===========================================
+.DS_Store
+Thumbs.db
+
+# ===========================================
+# Temporary Files
+# ===========================================
+*.tmp
+skills-lock.json

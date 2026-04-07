@@ -1,0 +1,60 @@
+---
+interface Props {
+    title: string;
+    description?: string;
+    nombre: string;
+    tipo: "15-anos" | "18-anos" | "boda";
+    invitacionId: string;
+}
+
+const { title, description, nombre, tipo, invitacionId } = Astro.props;
+
+const API_URL = "https://api.markentas.com";
+const tipoLabels = {
+    "15-anos": "15 Años",
+    "18-anos": "18 Años",
+    boda: "Boda",
+};
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content={description || `Invitación digital - ${nombre}`}
+        />
+        <meta name="robots" content="noindex, nofollow" />
+
+        <title>{title}</title>
+
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        />
+
+        <!-- Cada invitación trae sus propias fonts y tema completo -->
+        <link
+            rel="stylesheet"
+            href={`/invitaciones/${invitacionId}/css/estilo.css`}
+        />
+
+        <link rel="sitemap" href="/sitemap-index.xml" />
+    </head>
+    <body>
+        <slot />
+
+        <script is:inline define:vars={{ API_URL, INVITACION_ID: invitacionId }}
+        >
+            window.API_URL = API_URL;
+            window.INVITACION_ID = INVITACION_ID;
+        </script>
+        <script is:inline src={`/invitaciones/${invitacionId}/js/script.js`}
+        ></script>
+    </body>
+</html>

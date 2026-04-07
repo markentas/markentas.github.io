@@ -1,0 +1,130 @@
+---
+import { FEATURED } from '../consts';
+---
+
+<section class="featured" id="invitaciones">
+	<div class="container">
+		<div class="featured-grid">
+			<div class="featured-image">
+				<div class="image-placeholder">
+					<i class="fas fa-envelope-open-text"></i>
+					<span>Preview Tarjeta</span>
+				</div>
+			</div>
+			<div class="featured-content">
+				<h2>{FEATURED.title}</h2>
+				<p>{FEATURED.description}</p>
+				<a href={FEATURED.ctaLink} class="btn btn-primary">
+					{FEATURED.ctaText}
+					<i class="fas fa-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.featured {
+		padding: 80px 0;
+		background: var(--bg-alt);
+	}
+
+	.featured-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 40px;
+		align-items: center;
+	}
+
+	@media (min-width: 768px) {
+		.featured-grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 60px;
+		}
+	}
+
+	.featured-image {
+		order: 2;
+	}
+
+	@media (min-width: 768px) {
+		.featured-image {
+			order: 1;
+		}
+	}
+
+	.image-placeholder {
+		aspect-ratio: 4/3;
+		background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-glass) 100%);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-xl);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+
+	.image-placeholder i {
+		font-size: 4rem;
+		color: var(--accent);
+		opacity: 0.5;
+	}
+
+	.featured-content {
+		order: 1;
+	}
+
+	@media (min-width: 768px) {
+		.featured-content {
+			order: 2;
+		}
+	}
+
+	.featured-content h2 {
+		font-size: clamp(1.5rem, 4vw, 2.25rem);
+		font-weight: 700;
+		margin-bottom: 16px;
+		color: var(--text);
+	}
+
+	.featured-content p {
+		color: var(--text-muted);
+		font-size: 1.1rem;
+		line-height: 1.7;
+		margin-bottom: 32px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		padding: 14px 28px;
+		border-radius: var(--radius-full);
+		font-weight: 600;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		cursor: pointer;
+	}
+
+	.btn-primary {
+		background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+		color: var(--bg);
+		box-shadow: 0 8px 24px var(--accent-glow);
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 12px 32px rgba(56, 189, 248, 0.4);
+	}
+
+	.btn-primary i {
+		transition: transform 0.2s ease;
+	}
+
+	.btn-primary:hover i {
+		transform: translateX(4px);
+	}
+</style>

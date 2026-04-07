@@ -1,0 +1,109 @@
+---
+interface Props {
+	nombre: string;
+	icono: string;
+	cantidad: number;
+	descripcion: string;
+	id: string;
+}
+
+const { nombre, icono, cantidad, descripcion, id } = Astro.props;
+---
+
+<a href={`#${id}`} class="category-card">
+	<div class="icon">
+		<i class={`fas ${icono}`}></i>
+	</div>
+	<div class="content">
+		<h3>{nombre}</h3>
+		<p>{descripcion}</p>
+		<span class="count">{cantidad} diseños</span>
+	</div>
+	<div class="arrow">
+		<i class="fas fa-arrow-down"></i>
+	</div>
+</a>
+
+<style>
+	.category-card {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 20px;
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-lg);
+		transition: all 0.3s ease;
+		cursor: pointer;
+		text-decoration: none;
+	}
+
+	.category-card:hover {
+		border-color: var(--accent);
+		background: var(--bg-glass);
+	}
+
+	.icon {
+		width: 56px;
+		height: 56px;
+		flex-shrink: 0;
+		background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(14, 165, 233, 0.1) 100%);
+		border-radius: var(--radius-md);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.icon i {
+		font-size: 1.5rem;
+		color: var(--accent);
+	}
+
+	.content {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.content h3 {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--text);
+		margin-bottom: 4px;
+	}
+
+	.content p {
+		font-size: 0.85rem;
+		color: var(--text-muted);
+		display: none;
+	}
+
+	@media (min-width: 640px) {
+		.content p {
+			display: block;
+		}
+	}
+
+	.count {
+		font-size: 0.8rem;
+		color: var(--accent);
+		font-weight: 500;
+	}
+
+	.arrow {
+		flex-shrink: 0;
+		color: var(--text-muted);
+		transition: transform 0.2s ease;
+	}
+
+	.category-card:hover .arrow {
+		transform: translateY(4px);
+		color: var(--accent);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.category-card,
+		.arrow {
+			transition: none;
+		}
+	}
+</style>
