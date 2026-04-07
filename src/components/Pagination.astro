@@ -1,0 +1,185 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl?: string;
+}
+
+const { currentPage, totalPages, baseUrl = '/blog' } = Astro.props;
+
+const showPagination = totalPages > 1;
+
+function getPageUrl(page: number): string {
+  if (page === 1) return baseUrl;
+  return `${baseUrl}/${page}`;
+}
+
+// Generate page numbers to show
+function getPageNumbers(current: number, total: number): (number | string)[] {
+  const pages: (number | string)[] = [];
+  const delta = 1;
+  
+  for (let i = 1; i <= total; i++) {
+    if (
+      i === 1 ||
+      i === total ||
+      (i >= current - delta && i <= current + delta)
+    ) {
+      pages.push(i);
+    } else if (pages[pages.length - 1] !== '...') {
+      pages.push('...');
+    }
+  }
+  
+  return pages;
+}
+
+const pageNumbers = getPageNumbers(currentPage, totalPages);
+---
+
+{showPagination && (
+  <nav class="pagination" aria-label="Paginación del blog">
+    <div class="pagination-info">
+      Página {currentPage} de {totalPages}
+    </div>
+    
+    <div class="pagination-controls">
+      {/* Previous button */}
+      {currentPage > 1 ? (
+        <a href={getPageUrl(currentPage - 1)} class="page-link" aria-label="Página anterior">
+          <i class="fas fa-chevron-left"></i>
+          Anterior
+        </a>
+      ) : (
+        <span class="page-link disabled" aria-disabled="true">
+          <i class="fas fa-chevron-left"></i>
+          Anterior
+        </span>
+      )}
+
+      {/* Page numbers */}
+      <div class="page-numbers">
+        {pageNumbers.map((page) => (
+          page === '...' ? (
+            <span class="ellipsis">...</span>
+          ) : page === currentPage ? (
+            <span class="page-link active" aria-current="page">
+              {page}
+            </span>
+          ) : (
+            <a href={getPageUrl(page as number)} class="page-link">
+              {page}
+            </a>
+          )
+        ))}
+      </div>
+
+      {/* Next button */}
+      {currentPage < totalPages ? (
+        <a href={getPageUrl(currentPage + 1)} class="page-link" aria-label="Página siguiente">
+          Siguiente
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      ) : (
+        <span class="page-link disabled" aria-disabled="true">
+          Siguiente
+          <i class="fas fa-chevron-right"></i>
+        </span>
+      )}
+    </div>
+  </nav>
+)}
+
+<style>
+  .pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .pagination-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .page-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .page-link:hover:not(.disabled):not(.active) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .page-link.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    cursor: default;
+  }
+
+  .page-link.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .ellipsis {
+    padding: 0 8px;
+    color: var(--text-muted);
+  }
+
+  .page-link i {
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 640px) {
+    .page-link {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+
+    .page-link span:not(.page-link) {
+      display: none;
+    }
+
+    .page-numbers {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-link {
+      transition: none;
+    }
+  }
+</style>

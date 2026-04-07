@@ -4,6 +4,7 @@
 dist/
 .astro/
 node_modules/
+src/assets/
 
 # ===========================================
 # Logs
