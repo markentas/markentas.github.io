@@ -24,7 +24,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -33,10 +33,18 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm build
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Error: dist folder not found after build"
+            exit 1
+          fi
+          echo "Build successful, dist folder exists"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
