@@ -6,10 +6,7 @@ import { FEATURED } from '../consts';
 	<div class="container">
 		<div class="featured-grid">
 			<div class="featured-image">
-				<div class="image-placeholder">
-					<i class="fas fa-envelope-open-text"></i>
-					<span>Preview Tarjeta</span>
-				</div>
+				<img src={FEATURED.image} alt="Preview de invitación digital" loading="lazy" />
 			</div>
 			<div class="featured-content">
 				<h2>{FEATURED.title}</h2>
@@ -53,24 +50,12 @@ import { FEATURED } from '../consts';
 		}
 	}
 
-	.image-placeholder {
-		aspect-ratio: 4/3;
-		background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-glass) 100%);
-		border: 1px solid var(--border);
+	.featured-image img {
+		width: 100%;
+		height: auto;
 		border-radius: var(--radius-xl);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 16px;
-		color: var(--text-muted);
-		font-size: 0.9rem;
-	}
-
-	.image-placeholder i {
-		font-size: 4rem;
-		color: var(--accent);
-		opacity: 0.5;
+		border: 1px solid var(--border);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 	}
 
 	.featured-content {
