@@ -9,6 +9,7 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mialacan.com',
+  output: 'static',
   integrations: [mdx(), sitemap()],
   adapter: cloudflare(),
 });
