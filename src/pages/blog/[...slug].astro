@@ -19,7 +19,13 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout 
+	title={post.data.title} 
+	description={post.data.description}
+	image={post.data.heroImage}
+	pubDate={post.data.pubDate}
+	updatedDate={post.data.updatedDate}
+>
 	<Navbar />
 	<main>
 		<article>
