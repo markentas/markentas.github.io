@@ -95,6 +95,18 @@ export const ADSENSE = {
       top: "2067175610",
       middle: "8496852594",
     },
+    blog: {
+      top: "8496852594",
+      middle: "8496852594",
+    },
+    invitaciones: {
+      top: "2067175610",
+      middle: "8496852594",
+    },
+    bienestar: {
+      top: "2067175610",
+      middle: "8496852594",
+    },
   },
 };
 

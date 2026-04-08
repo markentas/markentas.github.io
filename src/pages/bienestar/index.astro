@@ -8,6 +8,7 @@ import SectionProductos from '../../components/bienestar/SectionProductos.astro'
 import CTABienestar from '../../components/bienestar/CTABienestar.astro';
 import AdSense from '../../components/AdSense.astro';
 import Footer from '../../components/Footer.astro';
+import { ADSENSE } from '../../consts';
 ---
 
 <Layout 
@@ -18,9 +19,9 @@ import Footer from '../../components/Footer.astro';
   <Navbar />
   <main>
     <HeroBienestar />
-    <AdSense slot="2067175610" />
+    <AdSense slot={ADSENSE.slots.bienestar.top} />
     <SectionCiencia />
-    <AdSense slot="8496852594" />
+    <AdSense slot={ADSENSE.slots.bienestar.middle} />
     <SectionDiferenciadores />
     <SectionProductos />
     <CTABienestar />

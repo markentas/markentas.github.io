@@ -7,6 +7,7 @@ import SectionDisenos from '../../components/SectionDisenos.astro';
 import CTAConsulta from '../../components/CTAConsulta.astro';
 import AdSense from '../../components/AdSense.astro';
 import Footer from '../../components/Footer.astro';
+import { ADSENSE } from '../../consts';
 
 const title = 'Diseños de Invitaciones Digitales para Bodas, 15 y 18 Años';
 const description = 'Conocé nuestros diseños exclusivos para 15 años, 18 años y bodas. Invitaciones digitales interactivas con confirmación automática y fácil compartir.';
@@ -17,10 +18,10 @@ const description = 'Conocé nuestros diseños exclusivos para 15 años, 18 año
 	<main>
 		<HeroInvitaciones />
 		<SectionCategorias />
-		<AdSense slot="2067175610" />
+		<AdSense slot={ADSENSE.slots.invitaciones.top} />
 		<SectionDisenos />
 		<CTAConsulta />
-		<AdSense slot="8496852594" />
+		<AdSense slot={ADSENSE.slots.invitaciones.middle} />
 	</main>
 	<Footer />
 </Layout>

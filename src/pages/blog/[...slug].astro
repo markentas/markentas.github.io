@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import AdSense from '../../components/AdSense.astro';
+import { ADSENSE } from '../../consts';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -31,7 +32,7 @@ const { Content } = await render(post);
 		<article>
 			{post.data.heroImage && (
 				<div class="hero-image">
-					<img src={post.data.heroImage} alt="" loading="eager" fetchpriority="high" />
+					<img src={post.data.heroImage} alt={post.data.title} loading="eager" fetchpriority="high" />
 				</div>
 			)}
 			<div class="content">
@@ -60,13 +61,13 @@ const { Content } = await render(post);
 						)}
 					</div>
 				</header>
-				<AdSense slot="2067175610" />
+				<AdSense slot={ADSENSE.slots.blog.top} />
 				<div class="prose">
 					<Content />
 				</div>
 			</div>
 		</article>
-		<AdSense slot="8496852594" />
+		<AdSense slot={ADSENSE.slots.blog.middle} />
 	</main>
 	<Footer />
 </Layout>
