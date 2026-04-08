@@ -89,6 +89,15 @@ export const CATEGORIAS = [
   },
 ];
 
+export const ADSENSE = {
+  slots: {
+    home: {
+      top: "2067175610",
+      middle: "8496852594",
+    },
+  },
+};
+
 export const DISENOS = [
   {
     id: "maria",

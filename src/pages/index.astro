@@ -7,15 +7,16 @@ import SectionPosts from '../components/SectionPosts.astro';
 import SectionBienestar from '../components/SectionBienestar.astro';
 import AdSense from '../components/AdSense.astro';
 import Footer from '../components/Footer.astro';
+import { ADSENSE } from '../consts';
 ---
 
 <Layout image="/img/og-home.webp">
 	<Navbar />
 	<main>
 		<Hero />
-		<AdSense slot="2067175610" />
+		<AdSense slot={ADSENSE.slots.home.top} />
 		<SectionFeatured />
-		<AdSense slot="8496852594" />
+		<AdSense slot={ADSENSE.slots.home.middle} />
 		<SectionPosts />
 		<SectionBienestar />
 	</main>
