@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+	title="Términos y Condiciones"
+	description="Términos y condiciones de uso de Mialacan. Invitaciones digitales y servicios relacionados."
+>
+	<Navbar />
+	<main>
+		<div class="container">
+			<div class="content">
+				<header class="page-header">
+					<h1>Términos y Condiciones</h1>
+					<p class="last-updated">Última actualización: Marzo 2026</p>
+				</header>
+
+				<div class="prose">
+					<p>
+						Al usar el sitio web mialacan.com (en adelante, "Mialacan" o "el Sitio"), aceptás estos términos y condiciones en su totalidad.
+					</p>
+
+					<h2>1. Acerca de Mialacan</h2>
+
+					<p>Mialacan es un sitio web operado por <strong>Markentas</strong>. El sitio ofrece invitaciones digitales interactivas y contenido informativo sobre tecnología, eventos y bienestar.</p>
+
+					<p>Mialacan es un proyecto de Markentas. Markentas es el emprendimiento individual de Ricardo, especializado en diseño y desarrollo de soluciones digitales.</p>
+
+					<h2>2. Servicios ofrecidos</h2>
+
+					<h3>2.1 Invitaciones digitales</h3>
+
+					<p>Mialacan ofrece diseños de invitaciones digitales interactivas. Los diseños son propiedad de Mialacan/Markentas. Al contratar un servicio de invitación digital, obtenés una licencia de uso personal para tu evento.</p>
+
+					<h3>2.2 Contenido del blog</h3>
+
+					<p>Los artículos publicados en el blog de Mialacan son contenido informativo. Si bien nos esforzamos por mantener la información actualizada y precisa, no garantizamos la exactitud completa de todo el contenido.</p>
+
+					<h2>3. Propiedad intelectual</h2>
+
+					<p>Todo el contenido del sitio, incluyendo pero no limitado a textos, gráficos, logotipos, imágenes, diseños y software, es propiedad de Mialacan/Markentas o de sus respectivos creadores y está protegido por las leyes de propiedad intelectual.</p>
+
+					<p>Queda prohibido copiar, reproducir, distribuir o crear trabajos derivados sin autorización expresa.</p>
+
+					<h2>4. Enlaces externos</h2>
+
+					<p>El Sitio puede contener enlaces a sitios web de terceros. Estos enlaces se proporcionan únicamente para tu comodidad. No tenemos control sobre el contenido de esos sitios y no somos responsables de su contenido ni de las prácticas de privacidad de los mismos.</p>
+
+					<h2>5. Limitación de responsabilidad</h2>
+
+					<p>Mialacan/Markentas no será responsable por ningún daño directo, indirecto, incidental o consecuente derivado del uso del Sitio o de los servicios ofrecidos, en la máxima medida permitida por la ley.</p>
+
+					<h2>6. Modificaciones</h2>
+
+					<p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor al momento de su publicación en el Sitio. Tu uso continuado del Sitio después de cualquier modificación constituye tu aceptación de los nuevos términos.</p>
+
+					<h2>7. Ley aplicable y jurisdicción</h2>
+
+					<p>Estos términos se rigen por las leyes de la República Argentina. Cualquier controversia derivada del uso del Sitio será sometida a los tribunales ordinarios de la Ciudad de Salta, Argentina.</p>
+
+					<h2>8. Contacto</h2>
+
+					<p>Para consultas sobre estos términos:</p>
+
+					<ul>
+						<li><strong>WhatsApp:</strong> +54 9 387 3407 054</li>
+						<li><strong>Email:</strong> ricardo@markentas.com</li>
+					</ul>
+
+					<hr />
+
+					<p class="footnote">
+						<i class="fas fa-code"></i>
+						<strong>Markentas</strong> — Diseño y desarrollo web. Ricardo. Salta, Argentina.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		padding-top: 100px;
+		padding-bottom: 80px;
+		min-height: 100vh;
+	}
+
+	.container {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.content {
+		max-width: 100%;
+	}
+
+	.page-header {
+		margin-bottom: 40px;
+		padding-bottom: 24px;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.page-header h1 {
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		font-weight: 700;
+		line-height: 1.3;
+		margin-bottom: 8px;
+		color: var(--text);
+	}
+
+	.last-updated {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		font-style: italic;
+	}
+
+	.prose {
+		color: var(--text);
+		line-height: 1.8;
+	}
+
+	.prose p {
+		margin-bottom: 16px;
+	}
+
+	.prose h2 {
+		font-size: 1.35rem;
+		font-weight: 600;
+		margin-top: 40px;
+		margin-bottom: 16px;
+		color: var(--text);
+	}
+
+	.prose h3 {
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin-top: 24px;
+		margin-bottom: 12px;
+		color: var(--text);
+	}
+
+	.prose ul {
+		margin-bottom: 16px;
+		padding-left: 24px;
+	}
+
+	.prose li {
+		margin-bottom: 8px;
+	}
+
+	.prose strong {
+		font-weight: 600;
+		color: var(--text);
+	}
+
+	.prose a {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.prose a:hover {
+		opacity: 0.8;
+	}
+
+	.prose hr {
+		border: none;
+		border-top: 1px solid var(--border);
+		margin: 40px 0;
+	}
+
+	.prose .footnote {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.prose .footnote i {
+		color: var(--accent);
+		margin-top: 4px;
+		flex-shrink: 0;
+	}
+</style>

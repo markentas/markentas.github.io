@@ -10,6 +10,11 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://mialacan.com',
   output: 'static',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => page !== 'https://mialacan.com/about/',
+    }),
+  ],
   adapter: cloudflare(),
 });

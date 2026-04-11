@@ -1,63 +1,232 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import {
+	SITE_TITLE,
+	AUTHOR_NAME,
+	AUTHOR_ALIAS,
+	AUTHOR_URL,
+} from '../consts';
+
+const siteURL = new URL('/', Astro.site);
+
+const aboutPageJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'AboutPage',
+	headline: `Sobre ${SITE_TITLE}`,
+	description:
+		'Conocé la historia detrás de Mialacan: invitaciones digitales únicas y contenido sobre tecnología y bienestar. Creado por Ricardo desde Markentas.',
+	about: {
+		'@type': 'Person',
+		name: AUTHOR_NAME,
+		alternateName: AUTHOR_ALIAS,
+		url: new URL(AUTHOR_URL, Astro.site).toString(),
+		image: new URL('/img/author.jpg', Astro.site).toString(),
+		description: 'Diseñador y desarrollador web. Fundador de Markentas.',
+	},
+	mainEntity: {
+		'@type': 'Organization',
+		name: 'Markentas',
+		url: 'https://markentas.com',
+	},
+};
+
+const breadcrumbJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Inicio',
+			item: siteURL.toString(),
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Sobre Mí',
+			item: Astro.url.toString(),
+		},
+	],
+};
 ---
 
 <Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
+	title="Sobre Mí"
+	description="Conocé la historia detrás de Mialacan: invitaciones digitales únicas y contenido sobre tecnología y bienestar. Creado por Ricardo desde Markentas."
+	image="/img/author.jpg"
 >
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+	<Fragment slot="head">
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(aboutPageJsonLd)}
+		/>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(breadcrumbJsonLd)}
+		/>
+	</Fragment>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+	<Navbar />
+	<main>
+		<div class="container">
+			<div class="about-layout">
+				<div class="about-header">
+					<div class="author-photo">
+						<img src="/img/author.jpg" alt={`${AUTHOR_NAME} - Fundador de Mialacan`} />
+					</div>
+					<div class="author-info">
+						<h1>Hola, soy {AUTHOR_NAME}</h1>
+						<p class="author-subtitle">Diseñador y desarrollador. Detrás de Mialacan y Markentas.</p>
+					</div>
+				</div>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+				<div class="about-content prose">
+					<p>
+						Soy <strong>Ricardo</strong>, y detrás de Mialacan hay un compromiso con la
+						calidad y los detalles.
+					</p>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+					<p>
+						Mialacan surge como un espacio donde combino dos pasiones: crear
+						soluciones digitales que marquen la diferencia, y compartir contenido
+						útil sobre bienestar y tecnología.
+					</p>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
+					<p>
+						Desde <strong>Markentas</strong>, mi emprendimiento de diseño y
+						desarrollo, he trabajado en proyectos que buscan lo mismo: tecnología
+						que simplifica y embellece momentos importantes. Mialacan lleva ese
+						mismo enfoque, pero con un toque más personal.
+					</p>
+
+					<p>
+						Cada invitación digital que diseño busca no solo informar, sino
+						transmitir la esencia de tu evento. Y en el blog, mi objetivo es
+						ofrecer contenido que realmente aporte valor.
+					</p>
+
+					<p>
+						<strong>¿Querés crear algo juntos?</strong> Escribime por WhatsApp.
+					</p>
+
+					<div class="about-cta">
+						<a
+							href="https://api.markentas.com/api/whatsapp?src=Hola%2C%20me%20contacto%20desde%20mialacan.com%2Fabout%20y%20quiero%20crear%20algo%20juntos"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="btn-whatsapp"
+						>
+							<i class="fab fa-whatsapp"></i>
+							Escribime por WhatsApp
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<Footer />
 </Layout>
+
+<style>
+	main {
+		padding-top: 100px;
+		padding-bottom: 80px;
+		min-height: 100vh;
+	}
+
+	.about-layout {
+		max-width: 720px;
+		margin: 0 auto;
+	}
+
+	.about-header {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		margin-bottom: 48px;
+		padding-bottom: 32px;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.author-photo {
+		flex-shrink: 0;
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 3px solid var(--accent);
+	}
+
+	.author-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.author-info h1 {
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		font-weight: 700;
+		margin-bottom: 8px;
+		color: var(--text);
+	}
+
+	.author-subtitle {
+		color: var(--text-muted);
+		font-size: 1.1rem;
+	}
+
+	.about-content {
+		color: var(--text);
+		line-height: 1.8;
+	}
+
+	.about-content p {
+		margin-bottom: 20px;
+	}
+
+	.about-content strong {
+		font-weight: 600;
+		color: var(--text);
+	}
+
+	.about-cta {
+		margin-top: 40px;
+	}
+
+	.btn-whatsapp {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		padding: 14px 28px;
+		background: var(--whatsapp);
+		color: #fff;
+		border-radius: var(--radius-full);
+		font-weight: 600;
+		font-size: 1rem;
+		transition: all 0.2s ease;
+		text-decoration: none;
+	}
+
+	.btn-whatsapp:hover {
+		background: #20bd5a;
+		transform: translateY(-2px);
+	}
+
+	.btn-whatsapp i {
+		font-size: 1.2rem;
+	}
+
+	@media (max-width: 600px) {
+		.about-header {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.author-photo {
+			width: 100px;
+			height: 100px;
+		}
+	}
+</style>

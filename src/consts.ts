@@ -1,6 +1,20 @@
 export const SITE_TITLE = "Mialacan";
+export const SITE_TITLE_HOME =
+  "Invitaciones Digitales para Bodas, 15 y 18 Años";
 export const SITE_DESCRIPTION =
   "Explorando la intersección entre tecnología, eventos memorables y productividad para el día a día.";
+
+export const AUTHOR_NAME = "Ricardo";
+export const AUTHOR_ALIAS = "Jerle";
+export const AUTHOR_URL = "https://mialacan.com/about/";
+
+export const CONTACT_PHONE = "+54 387 340-7054";
+
+export const SOCIAL_LINKS = [
+  "https://www.facebook.com/markentas/",
+  "https://www.instagram.com/equipomarkentas",
+  "https://www.tiktok.com/@markentas",
+];
 
 export const WHATSAPP = {
   baseUrl: "https://api.markentas.com/api/whatsapp",

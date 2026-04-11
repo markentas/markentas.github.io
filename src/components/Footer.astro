@@ -9,6 +9,13 @@ const currentYear = new Date().getFullYear();
 			<p class="footer-tagline">
 				Explorando la intersección entre tecnología, eventos y productividad
 			</p>
+			<nav class="footer-nav" aria-label="Enlaces del sitio">
+				<a href="/about/">Sobre Mí</a>
+				<span class="footer-sep" aria-hidden="true">·</span>
+				<a href="/privacy/">Política de Privacidad</a>
+				<span class="footer-sep" aria-hidden="true">·</span>
+				<a href="/terms/">Términos y Condiciones</a>
+			</nav>
 			<p class="footer-powered">
 				Mialacan es un proyecto desarrollado por <a href="https://markentas.com" target="_blank" rel="noopener noreferrer">Markentas</a>
 			</p>
@@ -43,7 +50,30 @@ const currentYear = new Date().getFullYear();
 	.footer-tagline {
 		color: var(--text-muted);
 		font-size: 0.9rem;
+		margin-bottom: 16px;
+	}
+
+	.footer-nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 8px 4px;
 		margin-bottom: 24px;
+		font-size: 0.875rem;
+	}
+
+	.footer-nav a {
+		color: var(--text-muted);
+		transition: color 0.2s ease;
+	}
+
+	.footer-nav a:hover {
+		color: var(--accent);
+	}
+
+	.footer-sep {
+		color: var(--border);
 	}
 
 	.footer-powered {

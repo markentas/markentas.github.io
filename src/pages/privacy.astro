@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+	title="Política de Privacidad"
+	description="Política de privacidad de Mialacan. Cómo recopilamos, usamos y protegemos tu información personal."
+>
+	<Navbar />
+	<main>
+		<div class="container">
+			<div class="content">
+				<header class="page-header">
+					<h1>Política de Privacidad</h1>
+					<p class="last-updated">Última actualización: Marzo 2026</p>
+				</header>
+
+				<div class="prose">
+					<p>
+						En <strong>Mialacan</strong> respetamos tu privacidad. Esta política describe cómo recopilamos, usamos y protegemos tu información.
+					</p>
+
+					<h2>1. Información que recopilamos</h2>
+
+					<p><strong>Datos del formulario de contacto:</strong> Cuando nos escribís por WhatsApp o formulario, recopilamos tu nombre y mensaje.</p>
+
+					<p><strong>Información del navegador:</strong> Tipo de navegador, dirección IP, páginas visitadas y tiempo de permanencia (recopilado automáticamente a través de Google Analytics o herramientas similares).</p>
+
+					<p><strong>Datos de invitaciones digitales:</strong> Las confirmaciones de asistencia que los invitados envían a través de las invitaciones digitales son gestionadas por el dueño de la invitación, no por Mialacan.</p>
+
+					<h2>2. Cómo usamos tu información</h2>
+
+					<ul>
+						<li>Para responder a tus consultas sobre invitaciones digitales y nuestros servicios</li>
+						<li>Para mejorar la experiencia de usuario en el sitio</li>
+						<li>Para mostrar anuncios relevantes a través de Google AdSense</li>
+					</ul>
+
+					<h2>3. Cookies y Google AdSense</h2>
+
+					<p>Utilizamos Google AdSense, que utiliza cookies para mostrar anuncios personalizados basados en tus visitas anteriores. Las cookies de AdSense pueden incluir:</p>
+
+					<ul>
+						<li>Cookies de DoubleClick (Google)</li>
+						<li>Cookies de anunciantes asociados a AdSense</li>
+					</ul>
+
+					<p>Podés desactivar las cookies a través de la configuración de tu navegador. También podés optar por no recibir anuncios personalizados en: <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">https://www.google.com/settings/ads</a></p>
+
+					<p>Más información: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">https://policies.google.com/technologies/ads</a></p>
+
+					<h2>4. Servicios de terceros</h2>
+
+					<p><strong>WhatsApp:</strong> Al hacer clic en nuestros botones de WhatsApp, interactuás directamente con la API de Markentas. Tu conversación está sujeta a la política de privacidad de WhatsApp.</p>
+
+					<p><strong>Google Fonts:</strong> Utilizamos Google Fonts para cargar tipografías. Esto puede implicar la transferencia de datos a servidores de Google.</p>
+
+					<h2>5. Enlaces a terceros</h2>
+
+					<p>Nuestro sitio puede contener enlaces a otros sitios web (redes sociales, servicios externos). No somos responsables de las prácticas de privacidad de esos sitios.</p>
+
+					<h2>6. Tus derechos (Ley Argentina 25.326)</h2>
+
+					<p>Tenés derecho a:</p>
+
+					<ul>
+						<li>Acceder a tus datos personales</li>
+						<li>Rectificar datos inexactos</li>
+						<li>Solicitar la eliminación de tus datos</li>
+						<li>Opponerte al tratamiento de tus datos</li>
+					</ul>
+
+					<p>Para ejercer estos derechos, contactanos por WhatsApp.</p>
+
+					<h2>7. Protección de datos</h2>
+
+					<p>Implementamos medidas de seguridad razonables (HTTPS, hosting seguro). Sin embargo, ninguna transmisión de datos por Internet es 100% segura.</p>
+
+					<h2>8. Cambios a esta política</h2>
+
+					<p>Podemos actualizar esta política ocasionalmente. Cualquier cambio se publicará en esta página.</p>
+
+					<h2>9. Contacto</h2>
+
+					<ul>
+						<li><strong>WhatsApp:</strong> +54 9 387 3407 054</li>
+						<li><strong>Email:</strong> ricardo@markentas.com</li>
+						<li><strong>Sitio:</strong> https://mialacan.com</li>
+					</ul>
+
+					<hr />
+
+					<p class="footnote">
+						<i class="fas fa-info-circle"></i>
+						Esta política de privacidad fue adaptada de la política general de Markentas. Mialacan es un proyecto desarrollado por <a href="https://markentas.com" target="_blank" rel="noopener noreferrer">Markentas</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		padding-top: 100px;
+		padding-bottom: 80px;
+		min-height: 100vh;
+	}
+
+	.container {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.content {
+		max-width: 100%;
+	}
+
+	.page-header {
+		margin-bottom: 40px;
+		padding-bottom: 24px;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.page-header h1 {
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		font-weight: 700;
+		line-height: 1.3;
+		margin-bottom: 8px;
+		color: var(--text);
+	}
+
+	.last-updated {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		font-style: italic;
+	}
+
+	.prose {
+		color: var(--text);
+		line-height: 1.8;
+	}
+
+	.prose p {
+		margin-bottom: 16px;
+	}
+
+	.prose h2 {
+		font-size: 1.35rem;
+		font-weight: 600;
+		margin-top: 40px;
+		margin-bottom: 16px;
+		color: var(--text);
+	}
+
+	.prose ul {
+		margin-bottom: 16px;
+		padding-left: 24px;
+	}
+
+	.prose li {
+		margin-bottom: 8px;
+	}
+
+	.prose strong {
+		font-weight: 600;
+		color: var(--text);
+	}
+
+	.prose a {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.prose a:hover {
+		opacity: 0.8;
+	}
+
+	.prose hr {
+		border: none;
+		border-top: 1px solid var(--border);
+		margin: 40px 0;
+	}
+
+	.prose .footnote {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+		font-style: italic;
+	}
+
+	.prose .footnote i {
+		color: var(--accent);
+		margin-top: 4px;
+		flex-shrink: 0;
+	}
+</style>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /invitaciones/*/admin/
+Sitemap: https://mialacan.com/sitemap-index.xml

@@ -1,5 +1,11 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import {
+	SITE_TITLE,
+	SITE_TITLE_HOME,
+	SITE_DESCRIPTION,
+	CONTACT_PHONE,
+	SOCIAL_LINKS,
+} from '../consts';
 
 interface Props {
 	title?: string;
@@ -22,31 +28,57 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
 const siteURL = new URL('/', Astro.site);
-const fullTitle = `${title} | ${SITE_TITLE}`;
+
+// Homepage gets a unique title; other pages get "Title | Mialacan"
+const fullTitle =
+	title === SITE_TITLE ? SITE_TITLE_HOME : `${title} | ${SITE_TITLE}`;
 
 // Detect if this is a blog post based on URL
-const isBlogPost = Astro.url.pathname.startsWith('/blog/') && !Astro.url.pathname.endsWith('/blog/') && !Astro.url.pathname.match(/\/blog\/\d+\/?$/);
+const isBlogPost =
+	Astro.url.pathname.startsWith('/blog/') &&
+	!Astro.url.pathname.endsWith('/blog/') &&
+	!Astro.url.pathname.match(/\/blog\/\d+\/?$/);
 
-// JSON-LD for WebSite with Organization
+// Combined @graph: WebSite + Organization (enriched)
 const websiteJsonLd = {
 	'@context': 'https://schema.org',
-	'@type': 'WebSite',
-	name: SITE_TITLE,
-	description: SITE_DESCRIPTION,
-	url: siteURL.toString(),
-	publisher: {
-		'@type': 'Organization',
-		name: SITE_TITLE,
-		url: siteURL.toString(),
-	},
-	potentialAction: {
-		'@type': 'SearchAction',
-		target: {
-			'@type': 'EntryPoint',
-			urlTemplate: `${siteURL.toString()}?s={search_term_string}`,
+	'@graph': [
+		{
+			'@type': 'WebSite',
+			'@id': `${siteURL}#website`,
+			url: siteURL.toString(),
+			name: SITE_TITLE,
+			description: SITE_DESCRIPTION,
+			potentialAction: {
+				'@type': 'SearchAction',
+				target: {
+					'@type': 'EntryPoint',
+					urlTemplate: `${siteURL}?s={search_term_string}`,
+				},
+				'query-input': 'required name=search_term_string',
+			},
+			publisher: {
+				'@id': `${siteURL}#organization`,
+			},
 		},
-		'query-input': 'required name=search_term_string',
-	},
+		{
+			'@type': 'Organization',
+			'@id': `${siteURL}#organization`,
+			name: SITE_TITLE,
+			url: siteURL.toString(),
+			logo: {
+				'@type': 'ImageObject',
+				url: `${siteURL}img/apple-touch-icon.png`,
+			},
+			sameAs: SOCIAL_LINKS,
+			contactPoint: {
+				'@type': 'ContactPoint',
+				telephone: CONTACT_PHONE,
+				contactType: 'customer service',
+				availableLanguage: 'Spanish',
+			},
+		},
+	],
 };
 
 
@@ -93,7 +125,7 @@ const websiteJsonLd = {
 		{pubDate && <meta property="article:published_time" content={pubDate.toISOString()} />}
 		{pubDate && updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
 		{pubDate && <meta property="article:section" content="Blog" />}
-		{pubDate && <meta property="article:author" content={SITE_TITLE} />}
+		{pubDate && <meta property="article:author" content="Ricardo" />}
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />

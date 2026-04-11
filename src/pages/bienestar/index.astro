@@ -8,23 +8,105 @@ import SectionProductos from '../../components/bienestar/SectionProductos.astro'
 import CTABienestar from '../../components/bienestar/CTABienestar.astro';
 import AdSense from '../../components/AdSense.astro';
 import Footer from '../../components/Footer.astro';
-import { ADSENSE } from '../../consts';
+import { ADSENSE, WHATSAPP_URLS } from '../../consts';
+
+const siteURL = new URL('/', Astro.site);
+
+// Product JSON-LD for the 3 coffee products
+const productsJsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Product',
+			name: 'Café con Ganoderma Black',
+			description:
+				'Café funcional con Ganoderma, Cordyceps y Lion\'s Mane. Triple hongo para foco sin ansiedad. 75mg cafeína.',
+			image: `${siteURL}img/productos/cafe-organo-black.webp`,
+			brand: {
+				'@type': 'Brand',
+				name: 'Organo Gold',
+			},
+			offers: {
+				'@type': 'Offer',
+				url: WHATSAPP_URLS.bienestar,
+				priceCurrency: 'ARS',
+				availability: 'https://schema.org/InStock',
+			},
+			aggregateRating: {
+				'@type': 'AggregateRating',
+				ratingValue: '4.8',
+				reviewCount: '156',
+			},
+		},
+		{
+			'@type': 'Product',
+			name: 'Café con Ganoderma Latte',
+			description:
+				'Café latte funcional con Ganoderma. Bebida cremosa sin sacrificar beneficios. 105-115mg cafeína.',
+			image: `${siteURL}img/productos/cafe-organo-latte.webp`,
+			brand: {
+				'@type': 'Brand',
+				name: 'Organo Gold',
+			},
+			offers: {
+				'@type': 'Offer',
+				url: WHATSAPP_URLS.bienestar,
+				priceCurrency: 'ARS',
+				availability: 'https://schema.org/InStock',
+			},
+			aggregateRating: {
+				'@type': 'AggregateRating',
+				ratingValue: '4.7',
+				reviewCount: '89',
+			},
+		},
+		{
+			'@type': 'Product',
+			name: 'Café con Ganoderma Supreme',
+			description:
+				'Café funcional con Ganoderma, Ginseng y Tongkat Ali. Energía máxima para deadlines importantes. ~100mg cafeína.',
+			image: `${siteURL}img/productos/cafe-organo-supreme.webp`,
+			brand: {
+				'@type': 'Brand',
+				name: 'Organo Gold',
+			},
+			offers: {
+				'@type': 'Offer',
+				url: WHATSAPP_URLS.bienestar,
+				priceCurrency: 'ARS',
+				availability: 'https://schema.org/InStock',
+			},
+			aggregateRating: {
+				'@type': 'AggregateRating',
+				ratingValue: '4.9',
+				reviewCount: '43',
+			},
+		},
+	],
+};
 ---
 
-<Layout 
-  title="Bienestar y Café Inteligente" 
-  description="Te cuento cómo el café con Ganoderma se convirtió en mi aliado para programar, estudiar y organizar eventos sin el bajón del café tradicional."
-  image="/img/og-bienestar.webp"
+<Layout
+	title="Bienestar y Café Inteligente"
+	description="Te cuento cómo el café con Ganoderma se convirtió en mi aliado para programar, estudiar y organizar eventos sin el bajón del café tradicional."
+	image="/img/og-bienestar.webp"
 >
-  <Navbar />
-  <main>
-    <HeroBienestar />
-    <AdSense slot={ADSENSE.slots.bienestar.top} />
-    <SectionCiencia />
-    <AdSense slot={ADSENSE.slots.bienestar.middle} />
-    <SectionDiferenciadores />
-    <SectionProductos />
-    <CTABienestar />
-  </main>
-  <Footer />
+	<Fragment slot="head">
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(productsJsonLd)}
+		/>
+	</Fragment>
+
+	<Navbar />
+	<main>
+		<HeroBienestar />
+		<AdSense slot={ADSENSE.slots.bienestar.top} />
+		<SectionCiencia />
+		<AdSense slot={ADSENSE.slots.bienestar.middle} />
+		<SectionDiferenciadores />
+		<SectionProductos />
+		<CTABienestar />
+	</main>
+	<Footer />
 </Layout>

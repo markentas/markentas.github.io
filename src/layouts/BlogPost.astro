@@ -3,13 +3,20 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE } from '../consts';
+import {
+	SITE_TITLE,
+	AUTHOR_NAME,
+	AUTHOR_ALIAS,
+	AUTHOR_URL,
+} from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
-// JSON-LD for Article
+const siteURL = new URL('/', Astro.site);
+
+// JSON-LD for Article with real author
 const articleJsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Article',
@@ -20,18 +27,50 @@ const articleJsonLd = {
 	dateModified: (updatedDate || pubDate).toISOString(),
 	author: {
 		'@type': 'Person',
-		name: SITE_TITLE,
-		url: new URL('/', Astro.site).toString(),
+		name: AUTHOR_NAME,
+		alternateName: AUTHOR_ALIAS,
+		url: new URL(AUTHOR_URL, Astro.site).toString(),
+		image: new URL('/img/author.jpg', Astro.site).toString(),
 	},
 	publisher: {
 		'@type': 'Organization',
 		name: SITE_TITLE,
-		url: new URL('/', Astro.site).toString(),
+		url: siteURL.toString(),
+		logo: {
+			'@type': 'ImageObject',
+			url: new URL('/img/apple-touch-icon.png', Astro.site).toString(),
+		},
 	},
 	mainEntityOfPage: {
 		'@type': 'WebPage',
 		'@id': Astro.url.toString(),
 	},
+};
+
+// BreadcrumbList schema
+const breadcrumbJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Inicio',
+			item: siteURL.toString(),
+		},
+		{
+			'@type': 'ListItem',
+			position: 2,
+			name: 'Blog',
+			item: new URL('/blog/', Astro.site).toString(),
+		},
+		{
+			'@type': 'ListItem',
+			position: 3,
+			name: title,
+			item: Astro.url.toString(),
+		},
+	],
 };
 
 function formatDate(date: Date): string {
@@ -43,13 +82,23 @@ function formatDate(date: Date): string {
 }
 ---
 
-<Layout 
+<Layout
 	title={title}
 	description={description}
 	image={heroImage}
 	pubDate={pubDate}
 	updatedDate={updatedDate}
 >
+	<Fragment slot="head">
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(articleJsonLd)}
+		/>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(breadcrumbJsonLd)}
+		/>
+	</Fragment>
 
 	<Navbar />
 	<main>
