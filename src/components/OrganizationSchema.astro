@@ -1,0 +1,27 @@
+---
+// OrganizationSchema.astro
+// Schema Organization para Mialacan.com
+// Agrega este componente en el Layout o en About page
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mialacan",
+  "url": "https://mialacan.com",
+  "description": "Invitaciones digitales para bodas, 15 años, 18 años y eventos especiales. Diseño personalizado e interactivo.",
+  "sameAs": [
+    "https://www.facebook.com/markentas/",
+    "https://www.instagram.com/equipomarkentas",
+    "https://www.tiktok.com/@markentas",
+    "https://markentas.com"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+54 387 340-7054",
+    "contactType": "customer service",
+    "availableLanguage": "Spanish"
+  },
+  "areaServed": "AR",
+  "serviceType": "Invitaciones digitales"
+})} />

@@ -6,6 +6,7 @@ import {
 	CONTACT_PHONE,
 	SOCIAL_LINKS,
 } from '../consts';
+import OrganizationSchema from '../components/OrganizationSchema.astro';
 
 interface Props {
 	title?: string;
@@ -39,7 +40,7 @@ const isBlogPost =
 	!Astro.url.pathname.endsWith('/blog/') &&
 	!Astro.url.pathname.match(/\/blog\/\d+\/?$/);
 
-// Combined @graph: WebSite + Organization (enriched)
+// Combined @graph: WebSite only (Organization está en OrganizationSchema.astro)
 const websiteJsonLd = {
 	'@context': 'https://schema.org',
 	'@graph': [
@@ -56,26 +57,6 @@ const websiteJsonLd = {
 					urlTemplate: `${siteURL}?s={search_term_string}`,
 				},
 				'query-input': 'required name=search_term_string',
-			},
-			publisher: {
-				'@id': `${siteURL}#organization`,
-			},
-		},
-		{
-			'@type': 'Organization',
-			'@id': `${siteURL}#organization`,
-			name: SITE_TITLE,
-			url: siteURL.toString(),
-			logo: {
-				'@type': 'ImageObject',
-				url: `${siteURL}img/apple-touch-icon.png`,
-			},
-			sameAs: SOCIAL_LINKS,
-			contactPoint: {
-				'@type': 'ContactPoint',
-				telephone: CONTACT_PHONE,
-				contactType: 'customer service',
-				availableLanguage: 'Spanish',
 			},
 		},
 	],
@@ -141,6 +122,9 @@ const websiteJsonLd = {
 
 		<!-- JSON-LD for WebSite -->
 		<script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+
+		<!-- Organization Schema -->
+		<OrganizationSchema />
 
 		<!-- Slot for additional head content -->
 		<slot name="head" />
