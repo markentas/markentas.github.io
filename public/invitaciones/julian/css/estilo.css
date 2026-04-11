@@ -831,8 +831,8 @@ section {
 /* WhatsApp Floating Button */
 .whatsapp-float {
   position: fixed;
-  bottom: 100px;
-  right: 20px;
+  bottom: 150px;
+  right: 25px;
   width: 50px;
   height: 50px;
   background: #25d366;
@@ -987,40 +987,12 @@ section {
 }
 
 /* ============ ADN STYLES ============ */
-.whatsapp-float {
-  position: fixed;
-  bottom: 150px;
-  right: 25px;
-  width: 50px;
-  height: 50px;
-  background: #25d366;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.whatsapp-float.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-
 .saludos-float {
   position: fixed;
   bottom: 90px;
   right: 25px;
+  width: 50px;
+  height: 50px;
   width: 50px;
   height: 50px;
   background: #4299e1;
@@ -1620,3 +1592,5 @@ section {
     opacity: 0;
   }
 }
+
+/* GGA Review */
