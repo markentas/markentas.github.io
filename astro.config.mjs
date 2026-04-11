@@ -12,9 +12,7 @@ export default defineConfig({
   output: 'static',
   integrations: [
     mdx(),
-    sitemap({
-      filter: (page) => page !== 'https://mialacan.com/about/',
-    }),
+    sitemap(),
   ],
   adapter: cloudflare(),
 });
