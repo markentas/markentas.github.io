@@ -71,3 +71,9 @@ AGENTS.md
 # SEO Reports ( sensitive - puede contener datos de auditoría )
 # ===========================================
 seo-report/
+
+# ===========================================
+# Security Audit Files
+# ===========================================
+AUDIT.md
+TODO.md
