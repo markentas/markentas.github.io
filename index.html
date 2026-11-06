@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Last War — Calculadora de Secretaría | Rotación de puestos</title>
+<meta name="description" content="Calculadora de la rotación de Secretaría en Last War: elegí lista y puesto y ves a qué hora del servidor y en tu hora local te toca. Servidor UTC−2, turnos de 5 minutos.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mialacan.com/">
+<meta name="theme-color" content="#0a0b09">
+<meta name="author" content="Mialacan">
+<meta name="google-adsense-account" content="ca-pub-6341354300694706">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mialacan">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Last War — Calculadora de Secretaría">
+<meta property="og:description" content="Calculadora de la rotación de Secretaría en Last War: elegí lista y puesto y ves a qué hora del servidor y en tu hora local te toca. Servidor UTC−2, turnos de 5 minutos.">
+<meta property="og:url" content="https://mialacan.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Last War — Calculadora de Secretaría">
+<meta name="twitter:description" content="Calculadora de la rotación de Secretaría en Last War: elegí lista y puesto y ves a qué hora del servidor y en tu hora local te toca. Servidor UTC−2, turnos de 5 minutos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a0b09'/%3E%3Crect x='4' y='4' width='56' height='56' rx='8' fill='none' stroke='%23f5a623' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-size='27' font-weight='900' text-anchor='middle' fill='%23f5a623'%3ELW%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Secretaría Last War","url":"https://mialacan.com/","applicationCategory":"GameApplication","operatingSystem":"Any","inLanguage":"es","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6341354300694706" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --bg: #0a0b09;
+    --panel: #14170f;
+    --panel-2: #0d0f0a;
+    --line: rgba(245, 166, 35, .22);
+    --amber: #f5a623;
+    --amber-2: #ffcc66;
+    --text: #eae5d7;
+    --muted: #8d8a7a;
+    --warn: #ff9b7a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(900px 500px at 50% -12%, rgba(245, 166, 35, .10), transparent 65%),
+      repeating-linear-gradient(135deg, rgba(255, 255, 255, .018) 0 2px, transparent 2px 14px),
+      var(--bg);
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    padding: 30px 18px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(45deg, var(--amber) 0 14px, #15150f 14px 28px);
+    opacity: .85;
+    z-index: 10;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 720px;
+  }
+
+  /* ---------- Header ---------- */
+  .brand {
+    text-align: center;
+    margin: 10px 0 24px;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .30em;
+    color: var(--amber);
+    opacity: .85;
+  }
+
+  h1 {
+    margin: 8px 0 2px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black", sans-serif;
+    font-size: clamp(46px, 12vw, 82px);
+    line-height: .88;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: #f4ecda;
+    text-shadow: 0 4px 0 #000, 0 0 34px rgba(245, 166, 35, .22);
+  }
+
+  h1 span { color: var(--amber); }
+
+  .brand p {
+    margin: 10px 0 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .42em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Clocks ---------- */
+  .clocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .clock {
+    background: linear-gradient(180deg, rgba(24, 27, 18, .9), rgba(12, 14, 9, .95));
+    border: 1px solid var(--line);
+    padding: 12px 10px;
+    text-align: center;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .clock .label {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    color: var(--amber);
+    margin-bottom: 5px;
+  }
+
+  .clock .time {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .clock .tz {
+    display: block;
+    margin-top: 4px;
+    font-size: 9px;
+    letter-spacing: .10em;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---------- Card ---------- */
+  .card {
+    background: linear-gradient(180deg, rgba(26, 30, 20, .96), rgba(14, 16, 11, .98));
+    border: 1px solid var(--line);
+    padding: 24px;
+    clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+  }
+
+  .field { margin-bottom: 18px; }
+
+  label, .field-title {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .hint {
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: .04em;
+    color: var(--muted);
+  }
+
+  .hint strong { color: var(--amber-2); }
+
+  /* Lists */
+  .segment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .segment button {
+    appearance: none;
+    padding: 13px 8px;
+    background: #151810;
+    border: 1px solid rgba(255, 255, 255, .09);
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    cursor: pointer;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: background .15s, color .15s, border-color .15s;
+  }
+
+  .segment button small {
+    display: block;
+    margin-top: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    opacity: .65;
+  }
+
+  .segment button.active {
+    background: linear-gradient(180deg, var(--amber), #d98a12);
+    border-color: var(--amber);
+    color: #14130d;
+    box-shadow: 0 0 26px rgba(245, 166, 35, .22);
+  }
+
+  .segment button.active small { opacity: .75; }
+
+  /* Slot */
+  .slot-row {
+    display: grid;
+    grid-template-columns: 54px 1fr 54px;
+    gap: 8px;
+  }
+
+  .slot-row button {
+    appearance: none;
+    background: #151810;
+    border: 1px solid rgba(255, 255, 255, .10);
+    color: var(--amber);
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s;
+  }
+
+  .slot-row button:hover { background: #1e2217; }
+  .slot-row button:active { background: #262b1c; }
+
+  #slot {
+    width: 100%;
+    text-align: center;
+    padding: 10px 6px;
+    background: #0a0c07;
+    border: 1px solid rgba(245, 166, 35, .28);
+    color: var(--amber-2);
+    font-family: inherit;
+    font-size: 30px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    outline: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  #slot:focus { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(245, 166, 35, .10); }
+
+  #slot::-webkit-inner-spin-button,
+  #slot::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+  /* Base time */
+  .base-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  #base {
+    width: 100%;
+    padding: 11px 14px;
+    background: #0a0c07;
+    border: 1px solid rgba(255, 255, 255, .10);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    color-scheme: dark;
+    outline: none;
+  }
+
+  #base:focus { border-color: var(--amber); }
+
+  .ghost {
+    appearance: none;
+    padding: 0 12px;
+    background: transparent;
+    border: 1px solid rgba(245, 166, 35, .40);
+    color: var(--amber);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    cursor: pointer;
+    transition: background .15s;
+  }
+
+  .ghost:hover { background: rgba(245, 166, 35, .10); }
+
+  /* CTA */
+  .cta {
+    width: 100%;
+    margin-top: 4px;
+    padding: 16px;
+    border: 0;
+    cursor: pointer;
+    background: linear-gradient(180deg, #ffb43a, #e07d00);
+    color: #16130b;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .24em;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    box-shadow: 0 8px 30px rgba(245, 166, 35, .18);
+    transition: filter .15s, transform .05s;
+  }
+
+  .cta:hover { filter: brightness(1.08); }
+  .cta:active { transform: translateY(1px); }
+
+  /* ---------- Result ---------- */
+  .result {
+    margin-top: 22px;
+    border-top: 1px dashed rgba(245, 166, 35, .28);
+    padding-top: 20px;
+    animation: reveal .22s ease-out;
+  }
+
+  .result[hidden] { display: none; }
+
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .result-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    color: var(--amber);
+  }
+
+  .result-turn {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: .10em;
+  }
+
+  .result-turn b {
+    font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: .04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .result-main {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    margin: 2px 0 16px;
+  }
+
+  .big {
+    font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+    font-size: clamp(56px, 16vw, 84px);
+    line-height: .9;
+    color: #fff3d6;
+    text-shadow: 0 4px 0 rgba(0, 0, 0, .6);
+  }
+
+  .big small {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    color: var(--muted);
+    margin-left: 2px;
+  }
+
+  .equiv {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: var(--amber-2);
+  }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .kv {
+    background: var(--panel-2);
+    border: 1px solid rgba(255, 255, 255, .06);
+    padding: 12px;
+  }
+
+  .kv span {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    color: var(--muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .kv strong {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .base-used {
+    margin-top: 12px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .note {
+    margin-top: 6px;
+    min-height: 1em;
+    font-size: 10px;
+    line-height: 1.7;
+    letter-spacing: .04em;
+    color: var(--amber);
+  }
+
+  .note.warn { color: var(--warn); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    width: 100%;
+    max-width: 720px;
+    padding: 18px 4px 42px;
+    text-align: center;
+    font-size: 9px;
+    line-height: 1.9;
+    letter-spacing: .12em;
+    color: #6f6d61;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 520px) {
+    .card { padding: 18px; }
+    .clock .time { font-size: 20px; }
+    .result-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .result { animation: none; }
+  }
+
+  /* ---------- Publicidad ---------- */
+  .ad-slot {
+    margin: 18px 0 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, .02);
+    border: 1px solid rgba(255, 255, 255, .05);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .ad-slot .ad-label {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .20em;
+    color: #6f6d61;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .ad-slot ins {
+    display: block;
+    width: 100%;
+    min-height: 90px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="brand">
+      <div class="tag">// ALLIANCE OPS · SECRETARY ROTATION //</div>
+      <h1>LAST <span>WAR</span></h1>
+      <p>Calculadora de Secretaría</p>
+    </header>
+
+    <section class="clocks" aria-label="Relojes">
+      <div class="clock">
+        <span class="label">HORA SERVIDOR</span>
+        <span class="time" id="serverClock">--:--:--</span>
+        <span class="tz">UTC−2 · reinicio 00:00</span>
+      </div>
+      <div class="clock">
+        <span class="label">TU HORA</span>
+        <span class="time" id="localClock">--:--:--</span>
+        <span class="tz" id="localTz">detectando…</span>
+      </div>
+    </section>
+
+    <main class="card">
+      <div class="field">
+        <span class="field-title">Lista</span>
+        <div class="segment" role="group" aria-label="Lista">
+          <button type="button" data-list="1" class="active" aria-pressed="true">
+            LISTA 1 <small>PUESTOS 1–50</small>
+          </button>
+          <button type="button" data-list="2" aria-pressed="false">
+            LISTA 2 <small>PUESTOS 51–100</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="slot">Puesto en la lista</label>
+        <div class="slot-row">
+          <button type="button" id="minus" aria-label="Restar puesto">−</button>
+          <input id="slot" type="number" inputmode="numeric" min="1" max="50" value="1">
+          <button type="button" id="plus" aria-label="Sumar puesto">+</button>
+        </div>
+        <div class="hint">Turno total: <strong id="totalTurn">1</strong> / 100 · cada persona dura 5 min</div>
+      </div>
+
+      <div class="field">
+        <label for="base">Hora de inicio de la rotación (servidor)</label>
+        <div class="base-row">
+          <input id="base" type="time" value="00:00" step="60">
+          <button type="button" class="ghost" id="nowBtn">AHORA</button>
+        </div>
+        <div class="hint">Arranca con la hora actual del servidor y se recuerda al recargar. Pulsa AHORA para empezar una rotación nueva.</div>
+      </div>
+
+      <button type="button" class="cta" id="calc">CALCULAR TURNO</button>
+
+      <section class="result" id="result" aria-live="polite">
+        <div class="result-head">
+          <span class="result-label">TU TURNO</span>
+          <span class="result-turn"><b id="rTurn">1</b> / 100</span>
+        </div>
+
+        <div class="result-main">
+          <div class="big"><span id="rWait">5</span><small>MIN</small></div>
+          <div class="equiv" id="rEquiv">0 h 05 min · 0.08 h</div>
+        </div>
+
+        <div class="result-grid">
+          <div class="kv">
+            <span>Hora servidor (UTC−2)</span>
+            <strong id="rServer">00:05</strong>
+          </div>
+          <div class="kv">
+            <span>Tu hora local</span>
+            <strong id="rLocal">--:--</strong>
+          </div>
+        </div>
+
+        <div class="base-used" id="rBase"></div>
+        <div class="note" id="rNote"></div>
+      </section>
+    </main>
+
+    <section class="ad-slot" aria-label="Publicidad">
+      <span class="ad-label">Publicidad</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6341354300694706"
+           data-ad-slot="2067175610"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </section>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <footer>
+      100 puestos × 5 min = 8 h 20 min · servidor UTC−2 (sin horario de verano)<br>
+      La cuenta arranca en la hora de inicio que indiques · tu zona se detecta automáticamente
+    </footer>
+
+    <section class="ad-slot" aria-label="Publicidad">
+      <span class="ad-label">Publicidad</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6341354300694706"
+           data-ad-slot="8496852594"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </section>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+<script>
+  (function () {
+    "use strict";
+
+    var SERVER_OFFSET_MS = -2 * 60 * 60 * 1000; // servidor = UTC-2
+    var MS_MIN = 60 * 1000;
+    var MS_DAY = 24 * 60 * MS_MIN;
+    var STORAGE_KEY = "lastwar.rotationStartMs";
+    var MAX_AGE_MS = 10 * 60 * MS_MIN;
+
+    var list = 1;
+
+    var el = {
+      serverClock: document.getElementById("serverClock"),
+      localClock: document.getElementById("localClock"),
+      localTz: document.getElementById("localTz"),
+      slot: document.getElementById("slot"),
+      base: document.getElementById("base"),
+      totalTurn: document.getElementById("totalTurn"),
+      minus: document.getElementById("minus"),
+      plus: document.getElementById("plus"),
+      nowBtn: document.getElementById("nowBtn"),
+      calc: document.getElementById("calc"),
+      result: document.getElementById("result"),
+      rTurn: document.getElementById("rTurn"),
+      rWait: document.getElementById("rWait"),
+      rEquiv: document.getElementById("rEquiv"),
+      rServer: document.getElementById("rServer"),
+      rLocal: document.getElementById("rLocal"),
+      rBase: document.getElementById("rBase"),
+      rNote: document.getElementById("rNote")
+    };
+
+    function pad(n) { return n < 10 ? "0" + n : String(n); }
+
+    function clamp(n, min, max) { return Math.min(max, Math.max(min, n)); }
+
+    function rememberStart(ms) {
+      try { localStorage.setItem(STORAGE_KEY, String(ms)); } catch (e) { /* sin almacenamiento */ }
+    }
+
+    function savedStart() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        var ms = Number(raw);
+        var nowMs = Date.now();
+        if (!isFinite(ms)) return null;
+        if (ms > nowMs + MS_MIN) return null;
+        if (nowMs - ms > MAX_AGE_MS) return null;
+        return ms;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    // Fecha "de pared" del servidor: el instante UTC menos 2 h.
+    function serverWall(date) {
+      return new Date(date.getTime() + SERVER_OFFSET_MS);
+    }
+
+    function serverHM(ms) {
+      var d = new Date(ms + SERVER_OFFSET_MS);
+      return pad(d.getUTCHours()) + ":" + pad(d.getUTCMinutes());
+    }
+
+    function localHM(ms) {
+      return new Date(ms).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23"
+      });
+    }
+
+    function dayDiffLocal(ms, ref) {
+      var a = new Date(ms);
+      var da = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+      var db = Date.UTC(ref.getFullYear(), ref.getMonth(), ref.getDate());
+      return Math.round((da - db) / MS_DAY);
+    }
+
+    function fmtDuration(minutes) {
+      var h = Math.floor(minutes / 60);
+      var m = minutes % 60;
+      if (h && m) return h + " h " + pad(m) + " min";
+      if (h) return h + " h";
+      return m + " min";
+    }
+
+    function renderClocks() {
+      var now = new Date();
+
+      var s = serverWall(now);
+      el.serverClock.textContent =
+        pad(s.getUTCHours()) + ":" + pad(s.getUTCMinutes()) + ":" + pad(s.getUTCSeconds());
+
+      el.localClock.textContent = now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hourCycle: "h23"
+      });
+    }
+
+    function renderTimezone() {
+      var tz = "Tu zona";
+      try {
+        tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz;
+      } catch (e) { /* ignore */ }
+
+      var offset = -new Date().getTimezoneOffset(); // minutos al este de UTC
+      var sign = offset >= 0 ? "+" : "−";
+      var abs = Math.abs(offset);
+      var h = Math.floor(abs / 60);
+      var m = abs % 60;
+      var label = "UTC" + sign + h + (m ? ":" + pad(m) : "");
+
+      el.localTz.textContent = tz.replace(/_/g, " ") + " · " + label;
+    }
+
+    function currentTurn() {
+      var slot = parseInt(el.slot.value, 10);
+      if (!isFinite(slot)) slot = 1;
+      slot = clamp(slot, 1, 50);
+      return slot + (list === 2 ? 50 : 0);
+    }
+
+    function recalc() {
+      var turn = currentTurn();
+      el.totalTurn.textContent = turn;
+
+      var waitMin = turn * 5;
+
+      var parts = (el.base.value || "00:00").split(":");
+      var baseH = parseInt(parts[0], 10);
+      var baseM = parseInt(parts[1], 10);
+      if (!isFinite(baseH)) baseH = 0;
+      if (!isFinite(baseM)) baseM = 0;
+      baseH = clamp(baseH, 0, 23);
+      baseM = clamp(baseM, 0, 59);
+
+      var now = new Date();
+      var nowMs = now.getTime();
+
+      // Día actual en hora del servidor.
+      var sNow = serverWall(now);
+      var y = sNow.getUTCFullYear();
+      var mo = sNow.getUTCMonth();
+      var d = sNow.getUTCDate();
+
+      // Instante absoluto: 00:00 server = 02:00 UTC, por eso baseH + 2.
+      var baseMs = Date.UTC(y, mo, d, baseH + 2, baseM, 0, 0);
+
+      // Rotaciones que cruzan medianoche (ej. inicio 20:42 → turno 00:22).
+      // Si la hora de inicio queda más de 12 h en el futuro, en realidad
+      // arrancó el día anterior.
+      if (baseMs - nowMs > 12 * 60 * MS_MIN) {
+        baseMs -= MS_DAY;
+      }
+
+      rememberStart(baseMs);
+
+      var targetMs = baseMs + waitMin * MS_MIN;
+      var deltaMin = (targetMs - nowMs) / MS_MIN;
+
+      el.rTurn.textContent = turn;
+      el.rWait.textContent = waitMin;
+      el.rEquiv.textContent = fmtDuration(waitMin) + " · " + (waitMin / 60).toFixed(2) + " h";
+      el.rServer.textContent = serverHM(targetMs);
+      el.rLocal.textContent = localHM(targetMs);
+      el.rBase.textContent = "Inicio usado: " + serverHM(baseMs) + " server";
+
+      var notes = [];
+      var warn = false;
+
+      var sTarget = serverWall(new Date(targetMs));
+      var sDiff = Math.round((
+        Date.UTC(sTarget.getUTCFullYear(), sTarget.getUTCMonth(), sTarget.getUTCDate()) -
+        Date.UTC(y, mo, d)
+      ) / MS_DAY);
+      var lDiff = dayDiffLocal(targetMs, now);
+
+      if (lDiff === 1) {
+        notes.push("Cae al día siguiente en tu hora local.");
+      } else if (sDiff === 1) {
+        notes.push("En el servidor ya es el día siguiente.");
+      } else if (lDiff > 1 || sDiff > 1) {
+        notes.push("Cae " + Math.max(lDiff, sDiff) + " días después.");
+      }
+
+      if (deltaMin >= 0.5) {
+        notes.push("Faltan " + fmtDuration(Math.round(deltaMin)) + " para tu turno.");
+      } else if (deltaMin <= -0.5) {
+        var nextMs = targetMs + MS_DAY;
+        var nextLocal = localHM(nextMs);
+        if (dayDiffLocal(nextMs, now) === 1) nextLocal += " (mañana)";
+        notes.push(
+          "Ese turno ya pasó hace " + fmtDuration(Math.round(-deltaMin)) +
+          ". Si la rotación se repite mañana: " + serverHM(nextMs) + " server · " + nextLocal + " tu hora."
+        );
+        warn = true;
+      } else {
+        notes.push("Tu turno es ahora.");
+      }
+
+      el.rNote.textContent = notes.join(" ");
+      el.rNote.classList.toggle("warn", warn);
+      el.result.hidden = false;
+    }
+
+    function setList(next) {
+      list = next;
+      var buttons = document.querySelectorAll(".segment button");
+      for (var i = 0; i < buttons.length; i++) {
+        var active = Number(buttons[i].getAttribute("data-list")) === list;
+        buttons[i].classList.toggle("active", active);
+        buttons[i].setAttribute("aria-pressed", active ? "true" : "false");
+      }
+      recalc();
+    }
+
+    function step(delta) {
+      var value = parseInt(el.slot.value, 10);
+      if (!isFinite(value)) value = 1;
+      el.slot.value = clamp(value + delta, 1, 50);
+      recalc();
+    }
+
+    document.querySelectorAll(".segment button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        setList(Number(button.getAttribute("data-list")));
+      });
+    });
+
+    el.minus.addEventListener("click", function () { step(-1); });
+    el.plus.addEventListener("click", function () { step(1); });
+
+    el.slot.addEventListener("input", recalc);
+    el.slot.addEventListener("blur", function () {
+      var value = parseInt(el.slot.value, 10);
+      if (!isFinite(value)) value = 1;
+      el.slot.value = clamp(value, 1, 50);
+      recalc();
+    });
+
+    el.base.addEventListener("input", recalc);
+
+    function setBaseInput(ms) {
+      var s = serverWall(new Date(ms));
+      el.base.value = pad(s.getUTCHours()) + ":" + pad(s.getUTCMinutes());
+    }
+
+    el.nowBtn.addEventListener("click", function () {
+      setBaseInput(Date.now());
+      recalc();
+    });
+
+    el.calc.addEventListener("click", recalc);
+
+    renderTimezone();
+    renderClocks();
+
+    var restored = savedStart();
+    setBaseInput(restored !== null ? restored : Date.now());
+
+    setInterval(renderClocks, 1000);
+    setInterval(recalc, 30000);
+
+    recalc();
+  })();
+</script>
+</body>
+</html>
