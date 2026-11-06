@@ -1,0 +1,7 @@
+# Documentación privada del contador (contiene claves de administrador)
+CONTADOR.txt
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
