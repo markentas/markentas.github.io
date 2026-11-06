@@ -460,6 +460,29 @@
     text-transform: uppercase;
   }
 
+  /* ---------- Contador de visitas ---------- */
+  .visits {
+    margin-top: 12px;
+    font-size: 8px;
+    letter-spacing: .16em;
+    color: #4c4b43;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .visits[hidden] { display: none; }
+
+  .visits b {
+    font-weight: 700;
+    color: #75725f;
+  }
+
+  .visits span + span::before {
+    content: "·";
+    margin: 0 7px;
+    opacity: .55;
+  }
+
   @media (max-width: 520px) {
     .card { padding: 18px; }
     .clock .time { font-size: 20px; }
@@ -593,6 +616,12 @@
     <footer>
       100 puestos × 5 min = 8 h 20 min · servidor UTC−2 (sin horario de verano)<br>
       La cuenta arranca en la hora de inicio que indiques · tu zona se detecta automáticamente
+      <div class="visits" id="visits" hidden>
+        <span><b id="visitsToday">—</b> hoy</span>
+        <span><b id="visitsUnique">—</b> únicos</span>
+        <span><b id="visitsTotal">—</b> total</span>
+      </div>
+      <div class="visits" id="visitsNote" hidden>Contador de visitas · no usa cookies</div>
     </footer>
 
     <section class="ad-slot" aria-label="Publicidad">
@@ -876,6 +905,130 @@
     setInterval(recalc, 30000);
 
     recalc();
+  })();
+</script>
+
+<!-- Contador de visitas (Abacus) -->
+<script>
+  (function () {
+    "use strict";
+
+    var NS = "mialacan.com";
+    var API = "https://abacus.jasoncameron.dev";
+    var SALTA_OFFSET_MS = -3 * 60 * 60 * 1000; // Salta = UTC-3, sin horario de verano
+    var UNIQ_PREFIX = "lastwar.uniq.";
+    var TIMEOUT_MS = 5000;
+
+    var box = document.getElementById("visits");
+    var note = document.getElementById("visitsNote");
+    if (!box) return;
+
+    var out = {
+      today: document.getElementById("visitsToday"),
+      unique: document.getElementById("visitsUnique"),
+      total: document.getElementById("visitsTotal")
+    };
+
+    function pad(n) { return n < 10 ? "0" + n : String(n); }
+
+    // Día calendario en hora de Salta, igual para todos los visitantes.
+    function dateKeyAt(deltaDays) {
+      var d = new Date(Date.now() + SALTA_OFFSET_MS + (deltaDays || 0) * 24 * 60 * 60 * 1000);
+      return d.getUTCFullYear() + "-" + pad(d.getUTCMonth() + 1) + "-" + pad(d.getUTCDate());
+    }
+
+    function dayKey() { return dateKeyAt(0); }
+
+    function request(path) {
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, TIMEOUT_MS);
+
+      return fetch(API + path, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-store",
+        signal: ctrl.signal
+      }).then(function (res) {
+        clearTimeout(timer);
+        if (res.status === 404) return { value: 0 };
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      }).catch(function (err) {
+        clearTimeout(timer);
+        throw err;
+      });
+    }
+
+    function hit(key) { return request("/hit/" + NS + "/" + key); }
+    function get(key) { return request("/get/" + NS + "/" + key); }
+
+    function fmt(value) {
+      return Number(value).toLocaleString("es-AR");
+    }
+
+    function cleanup() {
+      var cutoff = dateKeyAt(-8);
+      var doomed = [];
+
+      try {
+        for (var i = 0; i < localStorage.length; i++) {
+          var name = localStorage.key(i);
+          if (!name || name.indexOf(UNIQ_PREFIX) !== 0) continue;
+          if (name.slice(UNIQ_PREFIX.length) < cutoff) doomed.push(name);
+        }
+        for (var j = 0; j < doomed.length; j++) {
+          localStorage.removeItem(doomed[j]);
+        }
+      } catch (e) { /* sin almacenamiento */ }
+    }
+
+    function start() {
+      var day = dayKey();
+      var seen = false;
+
+      try {
+        seen = localStorage.getItem(UNIQ_PREFIX + day) === "1";
+      } catch (e) { /* sin almacenamiento: contamos como único */ }
+
+      var jobs = {
+        today: hit("lastwar-day-" + day),
+        unique: seen ? get("lastwar-uniq-" + day) : hit("lastwar-uniq-" + day),
+        total: hit("lastwar-total")
+      };
+
+      if (!seen) {
+        try { localStorage.setItem(UNIQ_PREFIX + day, "1"); } catch (e) { /* nada */ }
+      }
+
+      Promise.allSettled([jobs.today, jobs.unique, jobs.total]).then(function (results) {
+        var keys = ["today", "unique", "total"];
+        var ok = 0;
+
+        results.forEach(function (result, i) {
+          var node = out[keys[i]];
+          if (result.status === "fulfilled" && result.value && typeof result.value.value === "number") {
+            node.textContent = fmt(result.value.value);
+            ok++;
+          } else {
+            node.textContent = "—";
+          }
+        });
+
+        // Si el servicio no responde, no mostramos nada: el pie queda limpio.
+        if (!ok) return;
+
+        box.hidden = false;
+        if (note) note.hidden = false;
+
+        cleanup();
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", start);
+    } else {
+      start();
+    }
   })();
 </script>
 </body>
